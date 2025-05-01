@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useQuiz } from "@/contexts/quiz";
 import styles from "./question.module.css";
-import Option from "../option/page";
+import Option from "../common/Option";
 import LoadingModal from "../LoadingModal";
 
 function Question() {

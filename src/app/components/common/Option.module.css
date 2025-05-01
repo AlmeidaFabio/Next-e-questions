@@ -1,0 +1,21 @@
+.option {
+  padding: 1rem;
+  margin: 0.5rem 0;
+  border-radius: 0.5rem;
+  background-color: var(--background-dark);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.option:hover {
+  background-color: var(--primary-color);
+  opacity: 0.8;
+}
+
+.correct {
+  background-color: #4caf50;
+}
+
+.incorrect {
+  background-color: #f44336;
+} 
