@@ -17,26 +17,30 @@ Simulador de questões para concursos públicos.
 ## Instalação
 
 1. Clone o repositório:
+
 ```bash
 git clone https://github.com/seu-usuario/edital-em-questao.git
 ```
 
-2. Instale as dependências:
+2.Instale as dependências:
+
 ```bash
 npm install
 # ou
 yarn install
 ```
 
-3. Configure as variáveis de ambiente:
+3.Configure as variáveis de ambiente:
 Crie um arquivo `.env.local` na raiz do projeto com:
-```
+
+```bash
 NEXT_PUBLIC_API_URL=https://api.editalemquestao.com.br
 ```
 
 ## Desenvolvimento
 
 Para iniciar o servidor de desenvolvimento:
+
 ```bash
 npm run dev
 # ou
@@ -46,13 +50,15 @@ yarn dev
 ## Build e Deploy
 
 1. Build do projeto:
+
 ```bash
 npm run build
 # ou
 yarn build
 ```
 
-2. Iniciar em produção:
+2.Iniciar em produção:
+
 ```bash
 # Para desenvolvimento local
 npm run start
@@ -85,18 +91,20 @@ O projeto pode ser hospedado em qualquer plataforma que suporte Next.js, como:
 Para serviços que suportam Docker, você pode usar a configuração standalone:
 
 1. Build do projeto:
+
 ```bash
 npm run build
 ```
 
-2. Execute o servidor standalone:
+2.Execute o servidor standalone:
+
 ```bash
 node .next/standalone/server.js
 ```
 
 ## Estrutura do Projeto
 
-```
+```bash
 src/
   ├── app/                 # Páginas e componentes
   ├── contexts/            # Contextos React
