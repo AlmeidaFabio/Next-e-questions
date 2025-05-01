@@ -8,7 +8,8 @@ if (!API_URL) {
 
 export const fetchQuestions = async (subject?: string): Promise<Question[]> => {
   try {
-    const url = subject ? `${API_URL}?subject=${encodeURIComponent(subject)}` : API_URL;
+    const baseUrl = API_URL.endsWith('/') ? API_URL.slice(0, -1) : API_URL;
+    const url = subject ? `${baseUrl}/questions?subject=${encodeURIComponent(subject)}` : `${baseUrl}/questions`;
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error('Failed to fetch questions');
