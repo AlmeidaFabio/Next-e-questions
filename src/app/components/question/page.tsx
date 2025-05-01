@@ -61,12 +61,13 @@ function Question() {
       <h2>{currentQuestion.question}</h2>
 
       <div>
-        {currentQuestion.options.map((option) => (
+        {currentQuestion.options.map((option, index) => (
           <Option
             option={option.text}
             answer={currentQuestion.answer}
             key={`${currentQuestion.id}-${option.id}`}
             selectOption={() => HandleSelectOption(option.text)}
+            letter={String.fromCharCode(65 + index)}
           />
         ))}
       </div>

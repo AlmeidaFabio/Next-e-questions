@@ -6,9 +6,10 @@ interface OptionProps {
     option: string;
     answer: string;
     selectOption: (option: string) => void;
+    letter: string;
 }
 
-function Option({option, answer, selectOption}: OptionProps) {
+function Option({option, answer, selectOption, letter}: OptionProps) {
     const quizCtx = useQuiz();
 
     const handleClick = () => {
@@ -30,10 +31,13 @@ function Option({option, answer, selectOption}: OptionProps) {
 
   return (
     <div 
-      className={`${styles.option} ${getOptionClass()}`}
+      className={`${styles.option} ${getOptionClass()} ${quizCtx.state.answerSelected ? styles.disabled : ''}`}
       onClick={handleClick}
     >
-      {option}
+      <span className={styles.optionLetter}>{letter}</span>
+      <div className={styles.optionText}>
+        <p>{option}</p>
+      </div>
     </div>
   )
 }
