@@ -1,0 +1,108 @@
+.subjectContainer {
+  width: 100%;
+  max-width: 800px;
+  padding: 2rem;
+  background-color: var(--background-light);
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 2rem 0;
+}
+
+.subjectContainer h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  color: var(--text-primary);
+}
+
+.selectAllButton {
+  width: 100%;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.8rem 2rem;
+  background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-hover) 100%);
+  border-radius: 2rem;
+  border: none;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.selectAllButton:hover {
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(90deg, var(--primary-hover) 0%, var(--primary-color) 100%);
+}
+
+.selectAllButton:active {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.subjectsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  width: 100%;
+}
+
+.subjectItem {
+  padding: 1.2rem;
+  background-color: var(--background-dark);
+  border: 2px solid var(--border-color);
+  border-radius: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 60px;
+}
+
+.subjectItem:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.subjectItem.selected {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+  border-color: transparent;
+  color: var(--text-primary);
+}
+
+.subjectItem span {
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.loading {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+  animation: pulse 1.5s infinite;
+}
+
+.error {
+  text-align: center;
+  padding: 1.5rem;
+  background-color: rgba(244, 67, 54, 0.1);
+  border: 1px solid var(--error-color);
+  border-radius: 0.8rem;
+  color: var(--error-color);
+  font-size: 1.1rem;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+} 

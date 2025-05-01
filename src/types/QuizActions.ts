@@ -1,25 +1,9 @@
-type StartQuizAction = {
-    type: "START_QUIZ";
-}
+import { Question } from "./Question";
 
-type ChangeQuestionAction = {
-    type: 'CHANGE_QUESTION';
-    payload: {
-        nextQuestion: number;
-        gameStage: string;
-    }
-}
-
-type CheckAnswerAction = {
-    type: 'CHECK_ANSWER'
-    payload: {
-        answer: string;
-        option: string;
-    }
-}
-
-type NewGameAction = {
-    type: 'NEW_GAME'
-}
-
-export type QuizActions = StartQuizAction | ChangeQuestionAction | CheckAnswerAction | NewGameAction
+export type QuizActions = 
+    | { type: "SET_QUESTIONS"; payload: { questions: Question[] } }
+    | { type: "START_QUIZ"; payload: { subjects: string[] } }
+    | { type: "ANSWER_QUESTION"; payload: { answer: string; option: string } }
+    | { type: "NEXT_QUESTION" }
+    | { type: "RESET_QUIZ"; payload: { questions: Question[] } }
+    | { type: "SET_GAME_STAGE"; payload: { stage: "Start" | "Playing" | "End" } };

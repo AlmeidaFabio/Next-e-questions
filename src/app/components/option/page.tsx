@@ -12,14 +12,30 @@ function Option({option, answer, selectOption}: Props) {
     const quizCtx = useQuiz();
 
     const handleClick = () => {
-      selectOption(option);
+      if (!quizCtx.state.answerSelected) {
+        selectOption(option);
+      }
+    }
+
+    const getOptionClass = () => {
+      if (quizCtx.state.answerSelected) {
+        if (option === answer) {
+          return styles.correct;
+        } else if (option === quizCtx.state.selectedAnswer) {
+          return styles.incorrect;
+        }
+      }
+      return '';
     }
 
   return (
-    <div className={`${styles.option} ${quizCtx.state.answerSelected && option === answer ? `${styles.correct}` : ""} ${quizCtx.state.answerSelected && option !== answer ? `${styles.wrong}` : ""}`} onClick={handleClick}>
+    <div 
+      className={`${styles.option} ${getOptionClass()}`}
+      onClick={handleClick}
+    >
       {option}
     </div>
   )
 }
 
-export default Option
+export default Option;

@@ -1,5 +1,5 @@
 "use client"
-import { createContext, Dispatch, ReactNode, useContext, useReducer } from "react";
+import React, { createContext, Dispatch, ReactNode, useContext, useReducer } from "react";
 import { QuizState } from "@/types/QuizState";
 import { QuizActions } from "@/types/QuizActions";
 import { initialState, quizReducer } from "@/reducers/quiz";
@@ -11,13 +11,16 @@ type ContextType = {
 
 type ProviderType = {
     children: ReactNode;
-}
+};
 
-const QuizContext = createContext<ContextType | undefined>(undefined)
+export const QuizContext = createContext<ContextType>({
+    state: initialState,
+    dispatch: () => null,
+});
 
-export const QuizProvider = ({ children }: ProviderType) => {
-    const [ state, dispatch ] = useReducer(quizReducer, initialState)
-    
+export function QuizProvider({ children }: ProviderType) {
+    const [ state, dispatch ] = useReducer(quizReducer, initialState);
+
     return (
         <QuizContext.Provider value={{
             state,

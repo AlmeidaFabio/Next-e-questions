@@ -1,0 +1,54 @@
+.end {
+  width: 100%;
+  max-width: 800px;
+  padding: 2rem;
+  background-color: var(--background-light);
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.end h1 {
+  font-size: 2.5rem;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 2rem;
+}
+
+.score {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background-color: var(--background-dark);
+  border-radius: 0.8rem;
+  border: 2px solid var(--border-color);
+}
+
+.score p {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.newGameButton {
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.8rem 2rem;
+  background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-hover) 100%);
+  border-radius: 2rem;
+  border: none;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.newGameButton:hover {
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(90deg, var(--primary-hover) 0%, var(--primary-color) 100%);
+}
+
+.newGameButton:active {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+} 

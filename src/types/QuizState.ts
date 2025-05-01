@@ -1,10 +1,12 @@
 import { Question } from "./Question";
 
 export type QuizState = {
-    gameStage: string;
     questions: Question[];
-    currentQuestion: number;
+    currentQuestionIndex: number;
     score: number;
-    answerSelected: boolean | string;
-    correctAnswers: number;
+    isQuizStarted: boolean;
+    selectedSubjects: string[];
+    gameStage: "Start" | "Playing" | "End";
+    answerSelected: boolean;
+    selectedAnswer: string | null;
 };

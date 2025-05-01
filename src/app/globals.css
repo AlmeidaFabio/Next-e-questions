@@ -1,19 +1,36 @@
 * {
-  padding:0;
-  margin:0;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
   font-family: "Inter", sans-serif;
-  color: #ffffff;
+}
+
+:root {
+  --primary-color: #8435de;
+  --primary-hover: #b854e8;
+  --background-dark: #1a1a1a;
+  --background-light: #2d2d2d;
+  --text-primary: #ffffff;
+  --text-secondary: #b3b3b3;
+  --border-color: #404040;
+  --success-color: #4caf50;
+  --error-color: #f44336;
 }
 
 body,
 html {
   min-height: 100vh;
   height: 100%;
+  background-color: var(--background-dark);
+  color: var(--text-primary);
+}
+
+#__next {
+  min-height: 100vh;
+  padding: 2rem 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  background-color: #1c1c1c;
 }
 
 img {
@@ -21,23 +38,73 @@ img {
 }
 
 button {
-  font-weight:bold;
-  font-size: 1.2rem;
-  cursor:pointer;
-  padding: .8rem 1.5rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.8rem 2rem;
   background: linear-gradient(
     90deg,
-    rgba(132, 53, 222, 1) 0%,
-    rgba(184, 84, 232, 1) 100%
+    var(--primary-color) 0%,
+    var(--primary-hover) 100%
   );
-  border-radius: 3rem;
+  border-radius: 2rem;
   border: none;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 button:hover {
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
   background: linear-gradient(
     90deg,
-    rgba(184, 84, 232, 1) 0%,
-    rgba(132, 53, 222, 1) 100%
+    var(--primary-hover) 0%,
+    var(--primary-color) 100%
   );
+}
+
+button:active {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+input, select, textarea {
+  background-color: var(--background-light);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  padding: 0.8rem 1rem;
+  color: var(--text-primary);
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--background-light);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-color);
 }

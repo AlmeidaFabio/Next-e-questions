@@ -1,15 +1,64 @@
 .option {
-    background-color: #3c0e70;
-    border-radius: 0.5rem;
-    padding: 1rem;
-    margin-bottom:1rem;
+    width: 100%;
+    min-width: 800px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1.5rem 2.5rem;
+    background-color: var(--background-dark);
+    border: 2px solid var(--border-color);
+    border-radius: 1rem;
     cursor: pointer;
-    opacity: 0.8;
-    transition: 0.4s;
+    transition: all 0.3s ease;
+    text-align: left;
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    min-height: 70px;
 }
 
-.option:hover {
-    opacity: 1
+.option:hover:not(.disabled) {
+    transform: translateY(-2px);
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.option.selected {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+    border-color: transparent;
+    color: var(--text-primary);
+}
+
+.option.correct {
+    background: linear-gradient(135deg, var(--success-color), #66bb6a);
+    border-color: transparent;
+    color: var(--text-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.option.incorrect {
+    background: linear-gradient(135deg, var(--error-color), #ef5350);
+    border-color: transparent;
+    color: var(--text-primary);
+}
+
+.option.disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.optionLetter {
+    font-weight: bold;
+    color: var(--primary-color);
+    min-width: 30px;
+}
+
+.optionText {
+    flex: 1;
+    line-height: 1.5;
 }
 
 .option p {
@@ -24,4 +73,14 @@
 .wrong {
     background-color: #3c0e70;
     opacity: 0.4;
+}
+
+@media (max-width: 768px) {
+    .option {
+        min-width: 280px;
+        padding: 1.2rem 1.5rem;
+        font-size: 1.1rem;
+        min-height: 60px;
+        gap: 1rem;
+    }
 }

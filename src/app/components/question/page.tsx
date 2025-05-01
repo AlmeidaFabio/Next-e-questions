@@ -1,33 +1,44 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { useQuiz } from "@/contexts/quiz";
 import styles from "./question.module.css";
 import Option from "../option/page";
+import LoadingModal from "../LoadingModal";
 
 function Question() {
   const quizCtx = useQuiz();
-  const currentQuestion = quizCtx.state.questions[quizCtx.state.currentQuestion];
+  const [isLoading, setIsLoading] = useState(!quizCtx.state.questions.length || !quizCtx.state.questions[quizCtx.state.currentQuestionIndex]);
+  
+  // Verifica se temos perguntas carregadas e uma questão atual válida
+  if (!quizCtx.state.questions.length || !quizCtx.state.questions[quizCtx.state.currentQuestionIndex]) {
+    return <LoadingModal isOpen={isLoading} />;
+  }
+
+  const currentQuestion = quizCtx.state.questions[quizCtx.state.currentQuestionIndex];
 
   function HandleNextQuestion() {
-    const nextQuestion = quizCtx.state.currentQuestion + 1;
+    const nextQuestion = quizCtx.state.currentQuestionIndex + 1;
     let endgame = false;
     if (!quizCtx.state.questions[nextQuestion]) {
       endgame = true;
     }
 
     quizCtx.dispatch({
-      type: "CHANGE_QUESTION",
-      payload: {
-        nextQuestion,
-        gameStage: endgame ? "End" : quizCtx.state.gameStage,
-      },
+      type: "NEXT_QUESTION"
     });
+
+    if (endgame) {
+      quizCtx.dispatch({
+        type: "SET_GAME_STAGE",
+        payload: { stage: "End" }
+      });
+    }
   }
 
   function HandleSelectOption(option: string): void {
     quizCtx.dispatch({
-      type: "CHECK_ANSWER",
+      type: "ANSWER_QUESTION",
       payload: {
         answer: currentQuestion.answer,
         option,
@@ -39,29 +50,32 @@ function Question() {
     <div className={styles.question}>
       <div className={styles.score}>
         <p>
-          Pergunta {quizCtx.state.currentQuestion + 1} de {quizCtx.state.questions.length}
+          Pergunta {quizCtx.state.currentQuestionIndex + 1} de {quizCtx.state.questions.length}
         </p>
-        <p>Pontos: {quizCtx.state.score}</p>
+        <p>Acertos: {quizCtx.state.score}</p>
       </div>
       <div className={styles.metadata}>
-        <p><strong>Categoria:</strong> {currentQuestion.category}</p>
-        <p><strong>Dificuldade:</strong> {currentQuestion.difficulty}</p>
+        <p><strong>Tópico:</strong> {currentQuestion.topic}</p>
+        <p><strong>Disciplina:</strong> {currentQuestion.subject}</p>
       </div>
       <h2>{currentQuestion.question}</h2>
 
       <div>
         {currentQuestion.options.map((option) => (
           <Option
-            option={option}
+            option={option.text}
             answer={currentQuestion.answer}
-            key={option}
-            selectOption={() => HandleSelectOption(option)}
+            key={`${currentQuestion.id}-${option.id}`}
+            selectOption={() => HandleSelectOption(option.text)}
           />
         ))}
       </div>
 
       {quizCtx.state.answerSelected && (
-        <button onClick={HandleNextQuestion}>Continuar</button>
+        <div className={styles.explanation}>
+          <p><strong>Explicação:</strong> {currentQuestion.explanation}</p>
+          <button onClick={HandleNextQuestion}>Continuar</button>
+        </div>
       )}
     </div>
   );

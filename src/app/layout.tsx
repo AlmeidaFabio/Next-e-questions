@@ -6,8 +6,8 @@ import { QuizProvider } from '@/contexts/quiz'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Master NERD',
-  description: 'Desafie seus conhecimentos nerds no Master Nerd, o quiz definitivo sobre cultura pop! Teste seu domínio sobre filmes, séries, games, animes e muito mais. Jogue sozinho ou desafie amigos para ver quem é o verdadeiro mestre da cultura geek!',
+  title: 'Edital em Questão',
+  description: 'Teste seus conhecimentos para concursos públicos com questões de diversas disciplinas',
 }
 
 export default function RootLayout({

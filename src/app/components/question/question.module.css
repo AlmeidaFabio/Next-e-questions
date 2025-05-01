@@ -1,44 +1,102 @@
 .question {
-  text-align: center;
-  width: 500px;
-  min-height: 550px;
-  background-color: #8435de;
-  border-radius: 2rem;
-  padding: 2rem;
-}
-
-.question h2 {
-  margin-bottom: 2rem;
-}
-
-.question p {
-  margin-bottom: 1rem;
-}
-
-.question button {
-  border: 2px solid #ffffff;
+  width: 100%;
+  min-width: 900px;
+  max-width: 1200px;
+  min-height: 500px;
+  padding: 3rem;
+  background-color: var(--background-light);
+  border-radius: 1.2rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .score {
   display: flex;
   justify-content: space-around;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background-color: var(--background-dark);
+  border-radius: 0.8rem;
+}
+
+.score p {
+  font-size: 1.1rem;
+  color: var(--text-primary);
 }
 
 .metadata {
-  margin: 1rem 0;
-  padding: 0.5rem;
   display: flex;
-  justify-content: center;
-  background-color: #f9f9f9;
-  border-radius: 0.5rem;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background-color: var(--background-dark);
+  border-radius: 0.8rem;
 }
 
 .metadata p {
-  margin: 0.2rem 1rem;
-  font-size: 0.9rem;
-  color: #555;
+  font-size: 1rem;
+  color: var(--text-secondary);
 }
 
 .metadata strong {
-  color: #333;
+  color: var(--primary-color);
+  margin-right: 0.5rem;
+}
+
+.question h2 {
+  font-size: 1.3rem;
+  line-height: 1.5;
+  margin: 1rem;
+  color: rgb(139, 144, 243);
+}
+
+.explanation {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: var(--background-dark);
+  border-radius: 0.8rem;
+}
+
+.explanation p {
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.explanation button {
+  margin: 0 auto;
+  display: block;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.8rem 2rem;
+  background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-hover) 100%);
+  border-radius: 2rem;
+  border: none;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.explanation button:hover {
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(90deg, var(--primary-hover) 0%, var(--primary-color) 100%);
+}
+
+.explanation button:active {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .question {
+    min-width: 300px;
+    padding: 1.5rem;
+  }
+
+  .metadata {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 }
