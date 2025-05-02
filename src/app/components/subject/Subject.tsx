@@ -64,7 +64,7 @@ export default function Subject({ onSubjectsChange }: SubjectProps) {
             className={styles.selectAllButton}
             onClick={handleSelectAll}
           >
-            {selectedSubjects.length === subjects.length ? 'Deselecionar Todos' : 'Selecionar Todos'}
+            {selectedSubjects.length === subjects.length ? 'Desmarcar Todos' : 'Selecionar Todos'}
           </button>
           <div className={styles.subjectsGrid}>
             {subjects.map((subject, index) => (

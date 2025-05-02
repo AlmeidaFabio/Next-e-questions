@@ -74,8 +74,10 @@ function Question() {
 
       {quizCtx.state.answerSelected && (
         <div className={styles.explanation}>
-          <p><strong>Explicação:</strong> {currentQuestion.explanation}</p>
-          <button onClick={HandleNextQuestion}>Continuar</button>
+          <div>
+            <p><strong>Explicação:</strong> {currentQuestion.explanation}</p>
+            <button onClick={HandleNextQuestion}>Continuar</button>
+          </div>
         </div>
       )}
     </div>

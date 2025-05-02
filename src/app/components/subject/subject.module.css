@@ -1,27 +1,27 @@
 .subjectContainer {
   width: 100%;
-  max-width: 800px;
+  max-width: 900px;
   padding: 2rem;
   background-color: var(--background-light);
   border-radius: 1rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin: 2rem 0;
+  margin-bottom: 1rem;
 }
 
 .subjectContainer h2 {
   text-align: center;
-  margin-bottom: 2rem;
-  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
   color: var(--text-primary);
 }
 
 .selectAllButton {
   width: 100%;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1rem;
   cursor: pointer;
-  padding: 0.8rem 2rem;
+  padding: 1rem;
   background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-hover) 100%);
   border-radius: 2rem;
   border: none;
@@ -42,12 +42,12 @@
 .subjectsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
+  gap: 0.5rem;
   width: 100%;
 }
 
 .subjectItem {
-  padding: 1.2rem;
+  padding: 0.5rem;
   background-color: var(--background-dark);
   border: 2px solid var(--border-color);
   border-radius: 0.8rem;
@@ -57,7 +57,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  min-height: 60px;
+  min-height: 40px;
 }
 
 .subjectItem:hover {
@@ -74,7 +74,7 @@
 
 .subjectItem span {
   font-weight: 500;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
 }
 
 .loading {
@@ -104,5 +104,11 @@
   }
   100% {
     opacity: 0.6;
+  }
+}
+
+@media (max-width: 600px) {
+  .subjectsGrid {
+    grid-template-columns: repeat(2, 1fr);
   }
 } 

@@ -2,7 +2,7 @@
   width: 100%;
   min-width: 900px;
   max-width: 1200px;
-  min-height: 500px;
+  min-height: 650px;
   padding: 3rem;
   background-color: var(--background-light);
   border-radius: 1.2rem;
@@ -54,10 +54,29 @@
 }
 
 .explanation {
-  margin-top: 2rem;
-  padding: 1.5rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.45);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.explanation > div {
   background-color: var(--background-dark);
-  border-radius: 0.8rem;
+  border: 2px solid var(--primary-color);
+  border-radius: 1.2rem;
+  padding: 2.5rem 2.5rem 2rem 2.5rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+  min-width: 350px;
+  max-width: 60vw;
+  text-align: center;
 }
 
 .explanation p {

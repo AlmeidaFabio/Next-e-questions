@@ -64,7 +64,7 @@ function Start() {
 
   return (
     <div className={styles.start}>
-      <h1>Simulador de Questões</h1>
+      <h1>Edital em Questão</h1>
       <p>Teste seus conhecimentos para concursos públicos com questões de diversas disciplinas</p>
       <Subject onSubjectsChange={setSelectedSubjects} />
       <button 
