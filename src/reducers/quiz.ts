@@ -9,7 +9,8 @@ export const initialState: QuizState = {
     selectedSubjects: [],
     gameStage: "Start",
     answerSelected: false,
-    selectedAnswer: null
+    selectedAnswer: null,
+    answers: {}
 };
 
 
@@ -18,7 +19,8 @@ export function quizReducer(state: QuizState, action: QuizActions): QuizState {
         case "SET_QUESTIONS":
             return {
                 ...state,
-                questions: action.payload.questions
+                questions: action.payload.questions,
+                answers: {}
             };
         case "START_QUIZ":
             return {
@@ -26,16 +28,22 @@ export function quizReducer(state: QuizState, action: QuizActions): QuizState {
                 isQuizStarted: true,
                 selectedSubjects: action.payload.subjects,
                 currentQuestionIndex: 0,
-                score: 0
+                score: 0,
+                answers: {}
             };
         case "ANSWER_QUESTION":
             const currentQuestion = state.questions[state.currentQuestionIndex];
             const isCorrect = currentQuestion.answer === action.payload.option;
+            const newAnswers = { ...state.answers, [state.currentQuestionIndex]: action.payload.option };
+            const allQuestionsAnswered = Object.keys(newAnswers).length === state.questions.length;
+            
             return {
                 ...state,
                 score: isCorrect ? state.score + 1 : state.score,
                 answerSelected: true,
-                selectedAnswer: action.payload.option
+                selectedAnswer: action.payload.option,
+                answers: newAnswers,
+                gameStage: allQuestionsAnswered ? "End" : state.gameStage
             };
         case "NEXT_QUESTION":
             return {
@@ -43,6 +51,13 @@ export function quizReducer(state: QuizState, action: QuizActions): QuizState {
                 currentQuestionIndex: state.currentQuestionIndex + 1,
                 answerSelected: false,
                 selectedAnswer: null
+            };
+        case "GO_TO_QUESTION":
+            return {
+                ...state,
+                currentQuestionIndex: action.payload.index,
+                answerSelected: false,
+                selectedAnswer: state.answers[action.payload.index] || null
             };
         case "RESET_QUIZ":
             return {

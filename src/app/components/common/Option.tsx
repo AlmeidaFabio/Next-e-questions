@@ -9,19 +9,20 @@ interface OptionProps {
     answer: string;
     selectOption: (option: string) => void;
     letter: string;
+    isAnswered: boolean;
 }
 
-function Option({option, answer, selectOption, letter}: OptionProps) {
+function Option({option, answer, selectOption, letter, isAnswered}: OptionProps) {
     const quizCtx = useQuiz();
 
     const handleClick = () => {
-      if (!quizCtx.state.answerSelected) {
+      if (!quizCtx.state.answerSelected && !isAnswered) {
         selectOption(option);
       }
     }
 
     const getOptionClass = () => {
-      if (quizCtx.state.answerSelected) {
+      if (quizCtx.state.answerSelected || isAnswered) {
         if (option === answer) {
           return styles.correct;
         } else if (option === quizCtx.state.selectedAnswer) {
@@ -33,7 +34,7 @@ function Option({option, answer, selectOption, letter}: OptionProps) {
 
   return (
     <div 
-      className={`${styles.option} ${getOptionClass()} ${quizCtx.state.answerSelected ? styles.disabled : ''}`}
+      className={`${styles.option} ${getOptionClass()} ${(quizCtx.state.answerSelected || isAnswered) ? styles.disabled : ''}`}
       onClick={handleClick}
     >
       <span className={styles.optionLetter}>{letter}</span>

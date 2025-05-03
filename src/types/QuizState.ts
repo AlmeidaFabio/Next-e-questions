@@ -9,4 +9,5 @@ export type QuizState = {
     gameStage: "Start" | "Playing" | "End";
     answerSelected: boolean;
     selectedAnswer: string | null;
+    answers: Record<number, string>;
 };

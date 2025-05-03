@@ -6,4 +6,5 @@ export type QuizActions =
     | { type: "ANSWER_QUESTION"; payload: { answer: string; option: string } }
     | { type: "NEXT_QUESTION" }
     | { type: "RESET_QUIZ"; payload: { questions: Question[] } }
-    | { type: "SET_GAME_STAGE"; payload: { stage: "Start" | "Playing" | "End" } };
+    | { type: "SET_GAME_STAGE"; payload: { stage: "Start" | "Playing" | "End" } }
+    | { type: "GO_TO_QUESTION"; payload: { index: number } };
