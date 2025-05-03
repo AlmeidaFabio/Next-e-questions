@@ -10,4 +10,6 @@ export type QuizState = {
     answerSelected: boolean;
     selectedAnswer: string | null;
     answers: Record<number, string>;
+    startTime: number | null;
+    elapsedTime: number;
 };

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useQuiz } from "@/contexts/quiz";
 import Option from "../common/Option";
 import LoadingModal from "../common/LoadingModal";
@@ -9,7 +9,21 @@ import styles from "./question.module.css";
 function Question() {
   const quizCtx = useQuiz();
   const [isLoading, setIsLoading] = useState(!quizCtx.state.questions.length || !quizCtx.state.questions[quizCtx.state.currentQuestionIndex]);
+  const [displayTime, setDisplayTime] = useState("00:00");
   
+  useEffect(() => {
+    if (quizCtx.state.gameStage === "Playing") {
+      const timer = setInterval(() => {
+        const elapsed = quizCtx.state.startTime ? Date.now() - quizCtx.state.startTime : 0;
+        const minutes = Math.floor(elapsed / 60000);
+        const seconds = Math.floor((elapsed % 60000) / 1000);
+        setDisplayTime(`${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`);
+      }, 1000);
+
+      return () => clearInterval(timer);
+    }
+  }, [quizCtx.state.gameStage, quizCtx.state.startTime]);
+
   // Verifica se temos perguntas carregadas e uma questão atual válida
   if (!quizCtx.state.questions.length || !quizCtx.state.questions[quizCtx.state.currentQuestionIndex]) {
     return <LoadingModal isOpen={isLoading} />;
@@ -73,17 +87,18 @@ function Question() {
 
   return (
     <div className={styles.question}>
+      <div className={styles.metadata}>
+        <p><strong>Tópico:</strong> {currentQuestion.topic}</p>
+        <p><strong>Disciplina:</strong> {currentQuestion.subject}</p>
+      </div>
       <div className={styles.score}>
         <p>
           Pergunta {quizCtx.state.currentQuestionIndex + 1} de {totalQuestions}
         </p>
         <p>Acertos: {quizCtx.state.score}</p>
+        <p>Tempo: {displayTime}</p>
       </div>
 
-      <div className={styles.metadata}>
-        <p><strong>Tópico:</strong> {currentQuestion.topic}</p>
-        <p><strong>Disciplina:</strong> {currentQuestion.subject}</p>
-      </div>
       <h2>{currentQuestion.question}</h2>
 
       <div>

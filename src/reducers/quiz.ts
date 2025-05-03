@@ -10,7 +10,9 @@ export const initialState: QuizState = {
     gameStage: "Start",
     answerSelected: false,
     selectedAnswer: null,
-    answers: {}
+    answers: {},
+    startTime: null,
+    elapsedTime: 0
 };
 
 
@@ -29,7 +31,9 @@ export function quizReducer(state: QuizState, action: QuizActions): QuizState {
                 selectedSubjects: action.payload.subjects,
                 currentQuestionIndex: 0,
                 score: 0,
-                answers: {}
+                answers: {},
+                startTime: Date.now(),
+                elapsedTime: 0
             };
         case "ANSWER_QUESTION":
             const currentQuestion = state.questions[state.currentQuestionIndex];
@@ -43,32 +47,35 @@ export function quizReducer(state: QuizState, action: QuizActions): QuizState {
                 answerSelected: true,
                 selectedAnswer: action.payload.option,
                 answers: newAnswers,
-                gameStage: allQuestionsAnswered ? "End" : state.gameStage
+                gameStage: allQuestionsAnswered ? "End" : state.gameStage,
+                elapsedTime: state.startTime ? Date.now() - state.startTime : 0
             };
         case "NEXT_QUESTION":
             return {
                 ...state,
                 currentQuestionIndex: state.currentQuestionIndex + 1,
                 answerSelected: false,
-                selectedAnswer: null
+                selectedAnswer: null,
+                elapsedTime: state.startTime ? Date.now() - state.startTime : 0
             };
         case "GO_TO_QUESTION":
             return {
                 ...state,
                 currentQuestionIndex: action.payload.index,
                 answerSelected: false,
-                selectedAnswer: state.answers[action.payload.index] || null
+                selectedAnswer: state.answers[action.payload.index] || null,
+                elapsedTime: state.startTime ? Date.now() - state.startTime : 0
             };
         case "RESET_QUIZ":
             return {
                 ...initialState,
-                questions: action.payload?.questions || state.questions,
                 selectedSubjects: []
             };
         case "SET_GAME_STAGE":
             return {
                 ...state,
-                gameStage: action.payload.stage
+                gameStage: action.payload.stage,
+                elapsedTime: state.startTime ? Date.now() - state.startTime : 0
             };
         default:
             return state;

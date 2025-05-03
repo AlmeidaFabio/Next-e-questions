@@ -14,26 +14,36 @@
 
 .score {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  margin-bottom: 2rem;
-  padding: 1rem;
-  background-color: var(--background-dark);
-  border-radius: 0.8rem;
+  margin-bottom: 1.2rem;
+  padding: 1.2rem 2rem;
+  background: linear-gradient(90deg, var(--background-dark) 80%, var(--primary-color) 100%);
+  border-radius: 1.2rem 1.2rem 0.7rem 0.7rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+  gap: 0.5rem;
+  border-bottom: 2px solid var(--primary-color);
 }
 
 .score p {
   font-size: 1.1rem;
   color: var(--text-primary);
+  margin: 0.2rem 0;
+  text-align: center;
 }
 
 .metadata {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 1rem 1.5rem;
-  background-color: var(--background-dark);
-  border-radius: 0.8rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 1.2rem 2rem 1.2rem 2rem;
+  background: linear-gradient(90deg, var(--background-dark) 80%, var(--primary-color) 100%);
+  border-radius: 1.2rem 1.2rem 0.7rem 0.7rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+  margin-bottom: 0.5rem;
+  border-bottom: 2px solid var(--primary-color);
 }
 
 .metadata p {
@@ -147,14 +157,30 @@
 
 @media (max-width: 768px) {
   .question {
-    min-width: 300px;
-    padding: 1.5rem;
+    min-width: unset;
+    max-width: 100vw;
+    padding: 0.7rem;
+    margin: 0.5rem auto;
   }
 
   .metadata {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
+    padding: 0.8rem 1rem 0.8rem 1rem;
+    border-radius: 1rem 1rem 0.6rem 0.6rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .score {
+    padding: 0.8rem 1rem;
+    border-radius: 1rem 1rem 0.6rem 0.6rem;
+    margin-bottom: 0.7rem;
+    gap: 0.2rem;
+    background: linear-gradient(90deg, var(--background-dark) 80%, var(--primary-color) 100%);
+    border-bottom: 2px solid var(--primary-color);
+  }
+
+  .score p {
+    font-size: 1rem;
+    margin: 0.1rem 0;
   }
 
   .navigation {
