@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import styles from "./subject.module.css";
-import LoadingModal from "../LoadingModal";
 import { fetchQuestions } from "@/services/quizService";
+import LoadingModal from "../common/LoadingModal";
+import styles from "./subject.module.css";
 
 interface SubjectProps {
   onSubjectsChange: (subjects: string[]) => void;
@@ -64,7 +64,7 @@ export default function Subject({ onSubjectsChange }: SubjectProps) {
             className={styles.selectAllButton}
             onClick={handleSelectAll}
           >
-            {selectedSubjects.length === subjects.length ? 'Desmarcar Todos' : 'Selecionar Todos'}
+            {selectedSubjects.length === subjects.length ? 'Desmarcar Todos' : 'Todos'}
           </button>
           <div className={styles.subjectsGrid}>
             {subjects.map((subject, index) => (
