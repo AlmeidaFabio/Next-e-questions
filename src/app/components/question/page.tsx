@@ -24,20 +24,31 @@ function Question() {
 
   function HandleNextQuestion() {
     const nextQuestion = quizCtx.state.currentQuestionIndex + 1;
-    let endgame = false;
-    if (!quizCtx.state.questions[nextQuestion]) {
-      endgame = true;
-    }
 
-    quizCtx.dispatch({
-      type: "NEXT_QUESTION"
-    });
-
-    if (endgame) {
+    // Se não houver próxima pergunta e todas as questões foram respondidas, finaliza o simulado
+    if (!quizCtx.state.questions[nextQuestion] && answeredQuestions === totalQuestions) {
       quizCtx.dispatch({
         type: "SET_GAME_STAGE",
         payload: { stage: "End" }
       });
+      return;
+    }
+
+    // Se houver próxima pergunta, avança para ela
+    if (quizCtx.state.questions[nextQuestion]) {
+      quizCtx.dispatch({
+        type: "NEXT_QUESTION"
+      });
+    } else {
+      // Se não houver próxima pergunta, encontra a primeira questão não respondida
+      const firstUnansweredIndex = quizCtx.state.questions.findIndex((_, index) => !quizCtx.state.answers[index]);
+      
+      if (firstUnansweredIndex !== -1) {
+        quizCtx.dispatch({
+          type: "GO_TO_QUESTION",
+          payload: { index: firstUnansweredIndex }
+        });
+      }
     }
   }
 
