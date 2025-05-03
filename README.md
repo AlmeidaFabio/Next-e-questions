@@ -1,25 +1,31 @@
 # Edital em Questão
 
-Simulador de questões para concursos públicos.
+Simulador de questões para concursos públicos com questões geradas por IA.
 
-## Tecnologias
+![Preview](preview.png)
+
+## 🚀 Tecnologias
 
 - Next.js 14
 - React 18
 - TypeScript
 - CSS Modules
+- Context API
+- Reducers
 
-## Requisitos
+## 📋 Pré-requisitos
 
 - Node.js 18 ou superior
 - npm ou yarn
+- Git
 
-## Instalação
+## 🔧 Instalação
 
 1. Clone o repositório:
 
 ```bash
 git clone https://github.com/seu-usuario/edital-em-questao.git
+cd edital-em-questao
 ```
 
 2.Instale as dependências:
@@ -37,7 +43,7 @@ Crie um arquivo `.env.local` na raiz do projeto com:
 NEXT_PUBLIC_API_URL=https://api.editalemquestao.com.br
 ```
 
-## Desenvolvimento
+## 🛠️ Desenvolvimento
 
 Para iniciar o servidor de desenvolvimento:
 
@@ -47,9 +53,11 @@ npm run dev
 yarn dev
 ```
 
-## Build e Deploy
+Acesse [https://e-questions.vercel.app/](https://e-questions.vercel.app/) para ver o resultado.
 
-1. Build do projeto:
+## 📦 Build e Deploy
+
+### Build do projeto
 
 ```bash
 npm run build
@@ -57,7 +65,7 @@ npm run build
 yarn build
 ```
 
-2.Iniciar em produção:
+### Iniciar em produção
 
 ```bash
 # Para desenvolvimento local
@@ -69,7 +77,7 @@ yarn start
 NODE_ENV=production node .next/standalone/server.js
 ```
 
-## Deploy
+## 🌐 Deploy
 
 O projeto pode ser hospedado em qualquer plataforma que suporte Next.js, como:
 
@@ -102,11 +110,13 @@ npm run build
 node .next/standalone/server.js
 ```
 
-## Estrutura do Projeto
+## 📁 Estrutura do Projeto
 
 ```bash
 src/
   ├── app/                 # Páginas e componentes
+  │   ├── components/      # Componentes reutilizáveis
+  │   └── page.tsx         # Página principal
   ├── contexts/            # Contextos React
   ├── reducers/            # Reducers
   ├── services/            # Serviços e APIs
@@ -114,10 +124,27 @@ src/
   └── styles/              # Estilos globais
 ```
 
-## Contribuição
+## 🎯 Funcionalidades
+
+- Simulados personalizados por disciplina
+- Questões geradas por IA
+- Timer para acompanhamento
+- Feedback imediato
+- Interface responsiva
+- Design moderno e intuitivo
+
+## 🤝 Contribuição
 
 1. Faça um fork do projeto
 2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
 3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
 4. Push para a branch (`git push origin feature/AmazingFeature`)
 5. Abra um Pull Request
+
+## 📝 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+## 📧 Contato
+
+Link do Projeto: [https://github.com/AlmeidaFabio/Next-e-questions](https://github.com/AlmeidaFabio/Next-e-questions)
