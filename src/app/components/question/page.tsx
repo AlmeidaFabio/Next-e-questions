@@ -88,8 +88,8 @@ function Question() {
   return (
     <div className={styles.question}>
       <div className={styles.metadata}>
-        <p><strong>Tópico:</strong> {currentQuestion.topic}</p>
         <p><strong>Disciplina:</strong> {currentQuestion.subject}</p>
+        <p><strong>Tópico:</strong> {currentQuestion.topic}</p>
       </div>
       <div className={styles.score}>
         <p>

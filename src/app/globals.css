@@ -6,15 +6,15 @@
 }
 
 :root {
-  --primary-color: #8435de;
-  --primary-hover: #b854e8;
+  --primary-color: #772adc;
+  --primary-hover: #8e1a8a;
   --background-dark: #1a1a1a;
   --background-light: #2d2d2d;
   --text-primary: #ffffff;
   --text-secondary: #b3b3b3;
   --border-color: #404040;
   --success-color: #4caf50;
-  --error-color: #f44336;
+  --error-color: #f13f3ff4;
 }
 
 body,

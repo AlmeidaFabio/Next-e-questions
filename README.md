@@ -53,7 +53,7 @@ npm run dev
 yarn dev
 ```
 
-Acesse [https://e-questions.vercel.app/](https://e-questions.vercel.app/) para ver o resultado.
+Acesse [http://localhost:3000](http://localhost:3000) para ver o resultado.
 
 ## 📦 Build e Deploy
 
@@ -147,4 +147,5 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 
 ## 📧 Contato
 
-Link do Projeto: [https://github.com/AlmeidaFabio/Next-e-questions](https://github.com/AlmeidaFabio/Next-e-questions)
+- Repositório: [https://github.com/AlmeidaFabio/Next-e-questions](https://github.com/AlmeidaFabio/Next-e-questions)
+- Aplicação em produção: [https://e-questions.vercel.app/](https://e-questions.vercel.app/)
