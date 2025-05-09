@@ -71,9 +71,9 @@
 
 .navButton {
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: .9rem;
   cursor: pointer;
-  padding: 0.8rem 2rem;
+  padding: 0.8rem 1rem;
   background: var(--primary-gradient);
   border-radius: var(--radius-full);
   border: none;
