@@ -1,11 +1,14 @@
 import { QuizActions } from "@/types/QuizActions";
 import { QuizState } from "@/types/QuizState";
 
+const calculateElapsedTime = (startTime: number | null): number => {
+    return startTime ? Date.now() - startTime : 0;
+};
+
 export const initialState: QuizState = {
     questions: [],
     currentQuestionIndex: 0,
     score: 0,
-    isQuizStarted: false,
     selectedSubjects: [],
     gameStage: "Start",
     answerSelected: false,
@@ -14,7 +17,6 @@ export const initialState: QuizState = {
     startTime: null,
     elapsedTime: 0
 };
-
 
 export function quizReducer(state: QuizState, action: QuizActions): QuizState {
     switch (action.type) {
@@ -27,7 +29,6 @@ export function quizReducer(state: QuizState, action: QuizActions): QuizState {
         case "START_QUIZ":
             return {
                 ...state,
-                isQuizStarted: true,
                 selectedSubjects: action.payload.subjects,
                 currentQuestionIndex: 0,
                 score: 0,
@@ -48,7 +49,7 @@ export function quizReducer(state: QuizState, action: QuizActions): QuizState {
                 selectedAnswer: action.payload.option,
                 answers: newAnswers,
                 gameStage: allQuestionsAnswered ? "End" : state.gameStage,
-                elapsedTime: state.startTime ? Date.now() - state.startTime : 0
+                elapsedTime: calculateElapsedTime(state.startTime)
             };
         case "NEXT_QUESTION":
             return {
@@ -56,7 +57,7 @@ export function quizReducer(state: QuizState, action: QuizActions): QuizState {
                 currentQuestionIndex: state.currentQuestionIndex + 1,
                 answerSelected: false,
                 selectedAnswer: null,
-                elapsedTime: state.startTime ? Date.now() - state.startTime : 0
+                elapsedTime: calculateElapsedTime(state.startTime)
             };
         case "GO_TO_QUESTION":
             return {
@@ -64,7 +65,7 @@ export function quizReducer(state: QuizState, action: QuizActions): QuizState {
                 currentQuestionIndex: action.payload.index,
                 answerSelected: false,
                 selectedAnswer: state.answers[action.payload.index] || null,
-                elapsedTime: state.startTime ? Date.now() - state.startTime : 0
+                elapsedTime: calculateElapsedTime(state.startTime)
             };
         case "RESET_QUIZ":
             return {
@@ -75,7 +76,12 @@ export function quizReducer(state: QuizState, action: QuizActions): QuizState {
             return {
                 ...state,
                 gameStage: action.payload.stage,
-                elapsedTime: state.startTime ? Date.now() - state.startTime : 0
+                elapsedTime: calculateElapsedTime(state.startTime)
+            };
+        case "CLOSE_EXPLANATION":
+            return {
+                ...state,
+                answerSelected: false
             };
         default:
             return state;

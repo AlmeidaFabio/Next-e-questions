@@ -1,58 +1,58 @@
 .subjectContainer {
   width: 100%;
   max-width: 900px;
-  padding: 2rem;
+  padding: var(--spacing-lg);
   background-color: var(--background-light);
-  border-radius: 1rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin-bottom: 1rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  margin-bottom: var(--spacing-sm);
 }
 
 .subjectContainer h2 {
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing-sm);
   font-size: 1.4rem;
   color: var(--text-primary);
 }
 
 .selectAllButton {
-  width: 100%;
-  margin-bottom: 1rem;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.1rem;
   cursor: pointer;
-  padding: 1rem;
-  background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-hover) 100%);
-  border-radius: 2rem;
+  padding: 0.8rem 2rem;
+  background: var(--primary-gradient);
+  border-radius: var(--radius-full);
   border: none;
   color: var(--text-primary);
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: var(--transition-default);
+  box-shadow: var(--shadow-md);
+  width: 100%;
+  margin-bottom: var(--spacing-sm);
 }
 
 .selectAllButton:hover {
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-  background: linear-gradient(90deg, var(--primary-hover) 0%, var(--primary-color) 100%);
+  box-shadow: var(--shadow-lg);
+  background: var(--primary-gradient-reverse);
 }
 
 .selectAllButton:active {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-sm);
 }
 
 .subjectsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 0.5rem;
+  gap: var(--spacing-xs);
   width: 100%;
 }
 
 .subjectItem {
-  padding: 0.5rem;
+  padding: var(--spacing-xs);
   background-color: var(--background-dark);
   border: 2px solid var(--border-color);
-  border-radius: 0.8rem;
+  border-radius: var(--radius-md);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: var(--transition-default);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -63,11 +63,11 @@
 .subjectItem:hover {
   transform: translateY(-2px);
   border-color: var(--primary-color);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow-lg);
 }
 
 .subjectItem.selected {
-  background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+  background: var(--primary-gradient);
   border-color: transparent;
   color: var(--text-primary);
 }
@@ -79,7 +79,7 @@
 
 .loading {
   text-align: center;
-  padding: 2rem;
+  padding: var(--spacing-lg);
   color: var(--text-secondary);
   font-size: 1.2rem;
   animation: pulse 1.5s infinite;
@@ -87,10 +87,10 @@
 
 .error {
   text-align: center;
-  padding: 1.5rem;
+  padding: var(--spacing-md);
   background-color: rgba(244, 67, 54, 0.1);
   border: 1px solid var(--error-color);
-  border-radius: 0.8rem;
+  border-radius: var(--radius-md);
   color: var(--error-color);
   font-size: 1.1rem;
 }

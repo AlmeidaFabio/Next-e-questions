@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { fetchQuestions } from "@/services/quizService";
-import LoadingModal from "../common/LoadingModal";
+import LoadingModal from "../loadingModal/LoadingModal";
 import styles from "./subject.module.css";
 
 interface SubjectProps {
@@ -19,7 +19,13 @@ export default function Subject({ onSubjectsChange }: SubjectProps) {
       try {
         const questions = await fetchQuestions();
         const uniqueSubjects = Array.from(new Set(questions.map((question) => question.subject)));
-        setSubjects(uniqueSubjects);
+        const sortedSubjects = uniqueSubjects.sort((a, b) => {
+          // Handle empty or undefined subjects
+          const subjectA = a || 'Assunto não definido';
+          const subjectB = b || 'Assunto não definido';
+          return subjectA.localeCompare(subjectB, 'pt-BR');
+        });
+        setSubjects(sortedSubjects);
       } catch (error) {
         console.error('Error loading subjects:', error);
       } finally {

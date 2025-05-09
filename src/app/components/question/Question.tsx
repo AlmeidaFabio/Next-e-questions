@@ -2,31 +2,33 @@
 
 import React, { useState, useEffect } from "react";
 import { useQuiz } from "@/contexts/quiz";
-import Option from "../common/Option";
-import LoadingModal from "../common/LoadingModal";
+import Option from "../options/Options";
+import LoadingModal from "../loadingModal/LoadingModal";
 import styles from "./question.module.css";
+
+const formatTime = (elapsed: number): string => {
+  const minutes = Math.floor(elapsed / 60000);
+  const seconds = Math.floor((elapsed % 60000) / 1000);
+  return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+};
 
 function Question() {
   const quizCtx = useQuiz();
-  const [isLoading, setIsLoading] = useState(!quizCtx.state.questions.length || !quizCtx.state.questions[quizCtx.state.currentQuestionIndex]);
   const [displayTime, setDisplayTime] = useState("00:00");
   
   useEffect(() => {
     if (quizCtx.state.gameStage === "Playing") {
       const timer = setInterval(() => {
-        const elapsed = quizCtx.state.startTime ? Date.now() - quizCtx.state.startTime : 0;
-        const minutes = Math.floor(elapsed / 60000);
-        const seconds = Math.floor((elapsed % 60000) / 1000);
-        setDisplayTime(`${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`);
+        setDisplayTime(formatTime(quizCtx.state.elapsedTime));
       }, 1000);
 
       return () => clearInterval(timer);
     }
-  }, [quizCtx.state.gameStage, quizCtx.state.startTime]);
+  }, [quizCtx.state.gameStage, quizCtx.state.elapsedTime]);
 
   // Verifica se temos perguntas carregadas e uma questão atual válida
   if (!quizCtx.state.questions.length || !quizCtx.state.questions[quizCtx.state.currentQuestionIndex]) {
-    return <LoadingModal isOpen={isLoading} />;
+    return <LoadingModal isOpen={true} />;
   }
 
   const currentQuestion = quizCtx.state.questions[quizCtx.state.currentQuestionIndex];
@@ -141,7 +143,7 @@ function Question() {
         <div className={styles.explanation}>
           <div>
             <p><strong>Explicação:</strong> {currentQuestion.explanation}</p>
-            <button onClick={HandleNextQuestion}>Continuar</button>
+            <button onClick={() => quizCtx.dispatch({ type: "CLOSE_EXPLANATION" })}>Continuar</button>
           </div>
         </div>
       )}

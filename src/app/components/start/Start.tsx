@@ -5,7 +5,7 @@ import { useQuiz } from "@/contexts/quiz";
 import Subject from "../subject/Subject";
 import styles from "./start.module.css";
 import { fetchQuestions } from "@/services/quizService";
-import LoadingModal from "../common/LoadingModal";
+import LoadingModal from "../loadingModal/LoadingModal";
 
 function Start() {
   const quizCtx = useQuiz();

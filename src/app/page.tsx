@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
 import { useQuiz } from "@/contexts/quiz";
-import Start from "./components/start/page";
-import Question from "./components/question/page";
-import End from "./components/end/page";
+import Start from "./components/start/Start";
+import Question from "./components/question/Question";
+import End from "./components/end/End";
 
 import styles from "./page.module.css";
 

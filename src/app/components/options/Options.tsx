@@ -2,7 +2,7 @@
 
 import { useQuiz } from '@/contexts/quiz';
 import React from 'react'
-import styles from './Option.module.css'
+import styles from './options.module.css'
 
 interface OptionProps {
     option: string;

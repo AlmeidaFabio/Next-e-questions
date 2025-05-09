@@ -1,11 +1,5 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  font-family: "Inter", sans-serif;
-}
-
 :root {
+  /* Colors */
   --primary-color: #772adc;
   --primary-hover: #8e1a8a;
   --background-dark: #1a1a1a;
@@ -15,6 +9,43 @@
   --border-color: #404040;
   --success-color: #4caf50;
   --error-color: #f13f3ff4;
+
+  /* Gradients */
+  --primary-gradient: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-hover) 100%);
+  --primary-gradient-reverse: linear-gradient(90deg, var(--primary-hover) 0%, var(--primary-color) 100%);
+  --background-gradient: linear-gradient(90deg, var(--background-dark) 80%, var(--primary-color) 100%);
+  --score-gradient: linear-gradient(90deg, var(--primary-color) 20%, var(--background-dark) 70%);
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.2);
+  --shadow-xl: 0 8px 32px rgba(0, 0, 0, 0.35);
+
+  /* Border Radius */
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.2rem;
+  --radius-xl: 1.5rem;
+  --radius-full: 2rem;
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 2.5rem;
+
+  /* Transitions */
+  --transition-default: all 0.3s ease;
+}
+
+/* Base Styles */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
 }
 
 body,
@@ -27,7 +58,7 @@ html {
 
 #__next {
   min-height: 100vh;
-  padding: 2rem 1rem;
+  padding: var(--spacing-lg) var(--spacing-sm);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,39 +68,68 @@ img {
   max-width: 100%;
 }
 
-button {
+/* Common Button Styles */
+.button {
   font-weight: 600;
   font-size: 1.1rem;
   cursor: pointer;
   padding: 0.8rem 2rem;
-  background: linear-gradient(
-    90deg,
-    var(--primary-color) 0%,
-    var(--primary-hover) 100%
-  );
-  border-radius: 2rem;
+  background: var(--primary-gradient);
+  border-radius: var(--radius-full);
   border: none;
   color: var(--text-primary);
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: var(--transition-default);
+  box-shadow: var(--shadow-md);
 }
 
-button:hover {
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-  background: linear-gradient(
-    90deg,
-    var(--primary-hover) 0%,
-    var(--primary-color) 100%
-  );
+.button:hover {
+  box-shadow: var(--shadow-lg);
+  background: var(--primary-gradient-reverse);
 }
 
-button:active {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.button:active {
+  box-shadow: var(--shadow-sm);
 }
 
+/* Common Container Styles */
+.container {
+  background-color: var(--background-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--spacing-lg);
+}
+
+/* Common Text Styles */
+.text-primary {
+  color: var(--text-primary);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+/* Common Flexbox Utilities */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Common Grid Utilities */
+.grid {
+  display: grid;
+  gap: var(--spacing-xs);
+}
+
+/* Typography */
 h1, h2, h3, h4, h5, h6 {
   color: var(--text-primary);
-  margin-bottom: 1rem;
+  margin-bottom: var(--spacing-sm);
 }
 
 p {
@@ -77,10 +137,11 @@ p {
   line-height: 1.6;
 }
 
+/* Form Elements */
 input, select, textarea {
   background-color: var(--background-light);
   border: 1px solid var(--border-color);
-  border-radius: 0.5rem;
+  border-radius: var(--radius-sm);
   padding: 0.8rem 1rem;
   color: var(--text-primary);
   font-size: 1rem;
@@ -92,6 +153,7 @@ input:focus, select:focus, textarea:focus {
   border-color: var(--primary-color);
 }
 
+/* Scrollbar Styles */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -107,4 +169,16 @@ input:focus, select:focus, textarea:focus {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--border-color);
+}
+
+/* Common Animations */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
 }

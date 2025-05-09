@@ -4,7 +4,6 @@ export type QuizState = {
     questions: Question[];
     currentQuestionIndex: number;
     score: number;
-    isQuizStarted: boolean;
     selectedSubjects: string[];
     gameStage: "Start" | "Playing" | "End";
     answerSelected: boolean;
