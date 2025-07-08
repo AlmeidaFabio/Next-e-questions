@@ -1,0 +1,149 @@
+.button {
+  background-color: var(--color-background-light);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-sm);
+  box-shadow: var(--shadow-sm);
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  width: 100%;
+  margin-bottom: var(--spacing-sm);
+  font-family: inherit;
+}
+
+.button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.buttonSelected {
+  composes: button;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px var(--color-primary), var(--shadow-md);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  color: white;
+}
+
+.buttonCorrect {
+  composes: button;
+  border-color: var(--color-success);
+  box-shadow: 0 0 0 2px var(--color-success), var(--shadow-md);
+  background-color: rgba(76, 175, 80, 0.1);
+}
+
+.buttonWrong {
+  composes: button;
+  border-color: var(--color-error);
+  box-shadow: 0 0 0 2px var(--color-error), var(--shadow-md);
+  background-color: rgba(241, 63, 63, 0.1);
+}
+
+.buttonDisabled {
+  composes: button;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.contentContainer {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  width: 100%;
+  position: relative;
+}
+
+.letter {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--color-background-light);
+  border: 2px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
+}
+
+.letterSelected {
+  composes: letter;
+  background-color: white;
+  border-color: white;
+  color: var(--color-primary);
+}
+
+.letterCorrect {
+  composes: letter;
+  background-color: var(--color-success);
+  border-color: var(--color-success);
+  color: white;
+}
+
+.letterWrong {
+  composes: letter;
+  background-color: var(--color-error);
+  border-color: var(--color-error);
+  color: white;
+}
+
+.letterDisabled {
+  composes: letter;
+  opacity: 0.5;
+}
+
+.letterText {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.text {
+  color: var(--color-text-primary);
+  font-size: 16px;
+  line-height: 1.4;
+  flex: 1;
+  text-align: left;
+}
+
+.textSelected {
+  composes: text;
+  color: white;
+  font-weight: 500;
+}
+
+.textDisabled {
+  composes: text;
+  color: var(--color-text-secondary);
+}
+
+.statusIndicator {
+  position: absolute;
+  right: var(--spacing-sm);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--color-success);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.statusIndicatorWrong {
+  background-color: var(--color-error);
+}
+
+.statusIcon {
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.statusIconWrong {
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+} 

@@ -1,9 +1,314 @@
-.App {
-    width: 100%;
-    margin: 0 auto;
-    padding: var(--spacing-lg);
-    display: flex;
+.container {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.backgroundGradient {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, #a5b4fc 0%, #667eea 30%, #764ba2 70%, #330948 100%);
+  background-size: 200% 200%;
+  animation: gradientShift 8s ease infinite;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-lg);
+  text-align: center;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.header {
+  position: relative;
+  z-index: 2;
+  margin-top: var(--spacing-xl);
+  padding: 20px;
+  max-width: 600px;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.subtitle {
+  font-size: clamp(1.2rem, 4vw, 1.8rem);
+  color: var(--color-text-primary);
+  font-weight: 300;
+  line-height: 1.4;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.buttonSection {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-lg);
+  max-width: 400px;
+  width: 100%;
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.startButton {
+  position: relative;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  width: 100%;
+  max-width: 320px;
+  transition: all 0.3s ease;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.startButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(119, 42, 220, 0.3);
+}
+
+.startButton:active {
+  transform: translateY(0);
+}
+
+.buttonGradient {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  border-radius: var(--radius-full);
+  padding: 3px;
+  position: relative;
+  overflow: hidden;
+}
+
+.buttonGradient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.startButton:hover .buttonGradient::before {
+  left: 100%;
+}
+
+.buttonContent {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  border-radius: var(--radius-full);
+  padding: var(--spacing-md) var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.buttonTextContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+}
+
+.startButtonText {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 2px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.startButtonSubtext {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 400;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.buttonIconContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+}
+
+.buttonIconGradient {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.startButton:hover .buttonIconGradient {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.buttonIcon {
+  color: var(--color-text-primary);
+  transition: transform 0.3s ease;
+}
+
+.startButton:hover .buttonIcon {
+  transform: translateX(2px);
+}
+
+.motivationalSection {
+  position: relative;
+  z-index: 2;
+  max-width: 500px;
+  padding: var(--spacing-md);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 0.8s ease-out 0.4s both;
+  transition: all 0.3s ease;
+}
+
+.motivationalSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  border-radius: var(--radius-lg);
+  pointer-events: none;
+}
+
+.motivationalSection:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.motivationalText {
+  font-size: 1rem;
+  color: var(--color-text-primary);
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.5;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Animation for initial load */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .backgroundGradient {
+    padding: var(--spacing-md);
+  }
+  
+  .header {
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .subtitle {
+    font-size: clamp(1rem, 5vw, 1.4rem);
+  }
+  
+  .buttonSection {
+    gap: var(--spacing-md);
+  }
+  
+  .startButton {
+    max-width: 100%;
+  }
+  
+  .buttonContent {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+  
+  .startButtonText {
+    font-size: 1rem;
+  }
+  
+  .startButtonSubtext {
+    font-size: 0.8rem;
+  }
+  
+  .buttonIconContainer {
+    min-width: 36px;
+    height: 36px;
+  }
+  
+  .buttonIconGradient {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .motivationalSection {
+    padding: var(--spacing-sm);
+    margin: 0 var(--spacing-sm);
+  }
+  
+  .motivationalText {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .backgroundGradient {
+    padding: var(--spacing-sm);
+  }
+  
+  .subtitle {
+    font-size: clamp(0.9rem, 6vw, 1.2rem);
+  }
+  
+  .buttonContent {
     flex-direction: column;
+    text-align: center;
+    gap: var(--spacing-xs);
+  }
+  
+  .buttonTextContainer {
     align-items: center;
-    gap: var(--spacing-lg);
+  }
+  
+  .startButtonText {
+    font-size: 0.95rem;
+  }
+  
+  .startButtonSubtext {
+    font-size: 0.75rem;
+  }
+  
+  .motivationalText {
+    font-size: 0.85rem;
+  }
 }

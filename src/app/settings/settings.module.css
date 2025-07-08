@@ -1,0 +1,162 @@
+.container {
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #330948 100%);
+  background-size: 200% 200%;
+  animation: gradientShift 8s ease infinite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 0 64px 0;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.backButton {
+  background: rgba(255,255,255,0.85);
+  border: none;
+  color: #330948;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 8px 18px;
+  border-radius: 24px;
+  box-shadow: 0 2px 8px rgba(51,9,72,0.10);
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  outline: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  z-index: 2;
+}
+.backButton:hover, .backButton:focus {
+  background: #fff;
+  color: #764ba2;
+  box-shadow: 0 4px 16px rgba(51,9,72,0.18);
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+  margin: 48px 0 32px 0;
+  text-align: center;
+}
+
+.section {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 36px auto;
+  background: rgba(255,255,255,0.10);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.13);
+  box-shadow: 0 2px 12px rgba(76, 34, 112, 0.08);
+  padding: 32px 24px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Espaçamento extra para a seção Legal */
+.section:last-child {
+  margin-bottom: 48px;
+}
+
+.sectionTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 18px;
+}
+
+.settingItem {
+  margin-bottom: 18px;
+}
+.settingItemGradient {
+  background: linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.05));
+  border-radius: 16px;
+  padding: 18px 16px;
+  border: 1px solid rgba(255,255,255,0.13);
+  display: flex;
+  align-items: center;
+  transition: box-shadow 0.2s;
+}
+.settingItemContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.settingItemLeft {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 16px;
+}
+.settingIcon {
+  font-size: 1.5rem;
+  margin-right: 8px;
+}
+.settingText {
+  flex: 1;
+}
+.settingTitle {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 2px;
+}
+.settingSubtitle {
+  font-size: 0.98rem;
+  color: #e0e0e0;
+}
+.toggleSwitch {
+  width: 40px;
+  height: 22px;
+  accent-color: #764ba2;
+  cursor: pointer;
+}
+.chevronButton {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+.chevronButton:hover, .chevronButton:focus {
+  background: rgba(255,255,255,0.13);
+  color: #764ba2;
+}
+.chevron {
+  font-size: 1.5rem;
+  font-weight: bold;
+  opacity: 0.7;
+}
+
+@media (max-width: 700px) {
+  .section {
+    max-width: 98vw;
+    padding: 18px 6vw 18px 6vw;
+  }
+  .title {
+    font-size: 1.3rem;
+    margin: 32px 0 24px 0;
+  }
+  .backButton {
+    top: 12px;
+    left: 12px;
+    font-size: 1rem;
+    padding: 6px 12px;
+  }
+} 
