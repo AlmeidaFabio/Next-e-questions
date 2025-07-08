@@ -1,6 +1,6 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import React, { useEffect, useState, Suspense } from "react";
+import { useRouter } from "next/navigation";
 import { useAuth } from "@/contexts/authContext";
 import { StorageService } from "@/services/storageService";
 import { formatTime } from "@/utils/timeUtils";
@@ -8,8 +8,17 @@ import styles from "./quiz-details.module.css";
 import { SavedQuiz } from "@/types/Storage";
 
 import { FaArrowLeft, FaEye, FaTrash } from "react-icons/fa";
+import { useSearchParams } from "next/navigation";
 
 export default function QuizDetailsPage() {
+  return (
+    <Suspense fallback={<div className={styles.container}><div className={styles.loading}>Carregando detalhes...</div></div>}>
+      <QuizDetailsContent />
+    </Suspense>
+  );
+}
+
+function QuizDetailsContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { user } = useAuth();

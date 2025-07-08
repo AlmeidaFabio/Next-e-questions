@@ -20,18 +20,8 @@ export class QuestionService {
       return questions;
     } catch (error) {
       console.error('Error fetching questions:', error);
-      return this.handleFallback(error, subject);
-    }
-  }
-
-  private async handleFallback(error: any, subject?: string): Promise<Question[]> {
-    // Only try fallback if we're offline or it's a network error
-    if (error instanceof ApiError && error.type !== ApiErrorType.NETWORK_ERROR) {
       throw error;
     }
-
-    console.log('Network error detected, falling back to cached questions');
-    return this.handleOfflineScenario(subject);
   }
 
   async fetchQuestionsByEdital(editalId: number): Promise<Question[]> {
