@@ -127,10 +127,14 @@ export default function SettingsPage() {
 
   return (
     <div className={styles.container}>
-      <button className={styles.backButton} onClick={() => router.back()} type="button">
-        ← Voltar
-      </button>
-      <h1 className={styles.title}>Configurações</h1>
+      <div style={{ display: 'flex', alignItems: 'center', marginBottom: 32 }}>
+        <button className={styles.backButton} onClick={() => router.back()} type="button">
+          ← Voltar
+        </button>
+        <h1 className={styles.title} style={{ margin: 0 }}>
+          Configurações
+        </h1>
+      </div>
 
       <div className={styles.section}>
         <h2 className={styles.sectionTitle}>Preferências</h2>

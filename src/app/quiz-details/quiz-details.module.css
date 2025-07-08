@@ -17,37 +17,73 @@
 }
 
 .backButton {
-  background: rgba(255,255,255,0.85);
+  background: rgba(255, 255, 255, 0.2);
   border: none;
-  color: #330948;
-  font-size: 1.1rem;
-  font-weight: 600;
+  border-radius: 8px;
+  padding: 8px 16px;
+  margin-right: 16px;
+  color: white;
   cursor: pointer;
-  padding: 8px 18px;
-  border-radius: 24px;
-  box-shadow: 0 2px 8px rgba(51,9,72,0.10);
-  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-  outline: none;
+  font-size: 16px;
+  transition: all 0.3s ease;
   display: flex;
   align-items: center;
   gap: 6px;
-  margin-bottom: 24px;
-  margin-top: 24px;
-  align-self: flex-start;
-  margin-left: 24px;
+  margin-bottom: 0;
+  margin-top: 0;
+  align-self: unset;
+  margin-left: 0;
 }
-.backButton:hover, .backButton:focus {
-  background: #fff;
-  color: #764ba2;
-  box-shadow: 0 4px 16px rgba(51,9,72,0.18);
+
+.backButton:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
 }
 
 .title {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
   color: #fff;
-  margin: 0 0 32px 0;
-  text-align: center;
+  margin: 0;
+  text-align: left;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 32px;
+  width: 100%;
+  max-width: 800px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+@media (max-width: 700px) {
+  .header {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+    max-width: 98vw;
+    padding: 0 4vw;
+  }
+  .title {
+    font-size: 1.1rem;
+    margin: 0;
+    word-break: break-word;
+    flex: 1 1 0%;
+    display: flex;
+    align-items: center;
+  }
+  .backButton {
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    font-size: 0.98rem;
+    padding: 6px 10px;
+    display: flex;
+    align-items: center;
+  }
 }
 
 .card {

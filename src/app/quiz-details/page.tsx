@@ -82,9 +82,12 @@ function QuizDetailsContent() {
     return (
       <div className={styles.container}>
         <div className={styles.error}>{error || "Erro ao carregar detalhes do simulado"}</div>
-        <button className={styles.backButton} onClick={() => router.back()} type="button">
-          <FaArrowLeft /> Voltar
-        </button>
+        <div className={styles.header}>
+          <button className={styles.backButton} onClick={() => router.back()} type="button">
+            <FaArrowLeft /> Voltar
+          </button>
+          <h1 className={styles.title}>Detalhes do Simulado</h1>
+        </div>
       </div>
     );
   }
@@ -95,10 +98,12 @@ function QuizDetailsContent() {
 
   return (
     <div className={styles.container}>
-      <button className={styles.backButton} onClick={() => router.back()} type="button">
-        <FaArrowLeft /> Voltar
-      </button>
-      <h1 className={styles.title}>Detalhes do Simulado</h1>
+      <div className={styles.header}>
+        <button className={styles.backButton} onClick={() => router.back()} type="button">
+          <FaArrowLeft /> Voltar
+        </button>
+        <h1 className={styles.title}>Detalhes do Simulado</h1>
+      </div>
       <div className={styles.card}>
         <div className={styles.scoreSection}>
           <span className={styles.scoreTitle}>Pontuação</span>

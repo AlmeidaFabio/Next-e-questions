@@ -44,15 +44,14 @@ export default function HistoryPage() {
 
   return (
     <div className={styles['history-container']}>
-      <button
-        className={styles['history-back-button']}
-        onClick={() => router.back()}
-        type="button"
-        style={{ position: 'absolute', top: 24, left: 24, zIndex: 2 }}
-      >
-        ← Voltar
-      </button>
       <div className={styles['history-header']}>
+        <button
+          className={styles['history-back-button']}
+          onClick={() => router.back()}
+          type="button"
+        >
+           Voltar
+        </button>
         <h1 className={styles['history-title']}>Histórico</h1>
       </div>
       {quizzes.length === 0 ? (

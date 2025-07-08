@@ -37,11 +37,6 @@ export default function HomePage() {
               </div>
             </div>
           </button>
-          <div className={styles.motivationalSection}>
-            <span className={styles.motivationalText}>
-              &quot;O sucesso é a soma de pequenos esforços repetidos dia após dia&quot;
-            </span>
-          </div>
         </div>
       </div>
     </div>

@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Edital em Questão",
+  title: "E-Questão",
   description: "Plataforma interativa para simular provas, acompanhar desempenho e revisar questões de editais de concursos públicos.",
 };
 

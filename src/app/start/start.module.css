@@ -1,0 +1,387 @@
+/* Herda estilos base do page.module.css */
+@import url('../page.module.css');
+
+/* Sobrescreve e adiciona estilos específicos para a página Start */
+
+.container {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.backgroundGradient {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, #a5b4fc 0%, #667eea 30%, #764ba2 70%, #330948 100%);
+  background-size: 200% 200%;
+  animation: gradientShift 8s ease infinite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--spacing-lg);
+  text-align: center;
+  padding-top: 6rem; /* Espaço para header fixo */
+}
+
+.header {
+  position: relative;
+  z-index: 2;
+  margin-bottom: var(--spacing-xl);
+  padding: 20px;
+  max-width: 800px;
+  width: 100%;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.subtitle {
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  color: var(--color-text-primary);
+  font-weight: 600;
+  line-height: 1.3;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  margin-bottom: 0.5rem;
+}
+
+.buttonSection {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-lg);
+  max-width: 600px;
+  width: 100%;
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+/* Estilos para componentes de seleção */
+.stepContainer {
+  width: 100%;
+  max-width: 500px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: var(--spacing-lg);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.stepContainer:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Botão Continuar Simulado */
+.continueQuizWrapper {
+  width: 100%;
+  max-width: 500px;
+  margin-top: var(--spacing-lg);
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.continueQuizButton {
+  position: relative;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+  width: 100%;
+  transition: all 0.3s ease;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.continueQuizButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(220, 38, 127, 0.3);
+}
+
+.continueQuizGradient {
+  background: linear-gradient(135deg, #dc2626 0%, #dc2679 100%);
+  border-radius: var(--radius-lg);
+  padding: 3px;
+  position: relative;
+  overflow: hidden;
+}
+
+.continueQuizGradient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.continueQuizButton:hover .continueQuizGradient::before {
+  left: 100%;
+}
+
+.continueQuizContent {
+  background: linear-gradient(135deg, #dc2626 0%, #dc2679 100%);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md) var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Responsive Design para Start Page */
+
+/* Tablets */
+@media (max-width: 768px) {
+  .backgroundGradient {
+    padding: var(--spacing-md);
+    padding-top: 5rem;
+  }
+  
+  .header {
+    margin-bottom: var(--spacing-lg);
+    padding: 16px;
+  }
+  
+  .subtitle {
+    font-size: clamp(1.3rem, 5vw, 1.8rem);
+  }
+  
+  .buttonSection {
+    gap: var(--spacing-md);
+    max-width: 100%;
+  }
+  
+  .stepContainer {
+    max-width: 100%;
+    padding: var(--spacing-md);
+  }
+  
+  .continueQuizWrapper {
+    max-width: 100%;
+  }
+  
+  .continueQuizContent {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+}
+
+/* Smartphones */
+@media (max-width: 480px) {
+  .backgroundGradient {
+    padding: var(--spacing-sm);
+    padding-top: 4.5rem;
+  }
+  
+  .header {
+    margin-bottom: var(--spacing-md);
+    padding: 12px;
+  }
+  
+  .subtitle {
+    font-size: clamp(1.2rem, 6vw, 1.6rem);
+    line-height: 1.2;
+  }
+  
+  .buttonSection {
+    gap: var(--spacing-sm);
+  }
+  
+  .stepContainer {
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-md);
+  }
+  
+  .continueQuizWrapper {
+    margin-top: var(--spacing-md);
+  }
+  
+  .continueQuizContent {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm);
+  }
+  
+  .buttonTextContainer {
+    align-items: center;
+  }
+  
+  .startButtonText {
+    font-size: 0.95rem;
+  }
+  
+  .startButtonSubtext {
+    font-size: 0.75rem;
+  }
+  
+  .buttonIconContainer {
+    min-width: 32px;
+    height: 32px;
+  }
+  
+  .buttonIconGradient {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* Telas muito pequenas */
+@media (max-width: 360px) {
+  .backgroundGradient {
+    padding: 0.75rem;
+    padding-top: 4rem;
+  }
+  
+  .header {
+    padding: 8px;
+    margin-bottom: 1rem;
+  }
+  
+  .subtitle {
+    font-size: clamp(1.1rem, 6.5vw, 1.4rem);
+  }
+  
+  .buttonSection {
+    gap: 0.75rem;
+  }
+  
+  .stepContainer {
+    padding: 0.75rem;
+  }
+  
+  .continueQuizContent {
+    padding: 0.75rem;
+  }
+  
+  .startButtonText {
+    font-size: 0.9rem;
+  }
+  
+  .startButtonSubtext {
+    font-size: 0.7rem;
+  }
+  
+  .buttonIconContainer {
+    min-width: 28px;
+    height: 28px;
+  }
+  
+  .buttonIconGradient {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* Orientação landscape em smartphones */
+@media (max-height: 500px) and (orientation: landscape) {
+  .backgroundGradient {
+    padding: 0.5rem;
+    padding-top: 3.5rem;
+    justify-content: flex-start;
+  }
+  
+  .header {
+    margin-bottom: 0.5rem;
+    padding: 8px;
+  }
+  
+  .subtitle {
+    font-size: clamp(1rem, 4vw, 1.3rem);
+  }
+  
+  .buttonSection {
+    gap: 0.5rem;
+  }
+  
+  .stepContainer {
+    padding: 0.75rem;
+  }
+  
+  .continueQuizContent {
+    padding: 0.5rem 0.75rem;
+  }
+}
+
+/* Melhorias para devices com pouca altura */
+@media (max-height: 600px) {
+  .backgroundGradient {
+    padding-top: 4rem;
+  }
+  
+  .header {
+    margin-bottom: 1rem;
+  }
+  
+  .buttonSection {
+    gap: 1rem;
+  }
+  
+  .stepContainer {
+    padding: var(--spacing-md);
+  }
+}
+
+/* Ajustes para telas muito largas em mobile */
+@media (max-width: 480px) and (min-width: 400px) {
+  .stepContainer {
+    padding: var(--spacing-md);
+  }
+  
+  .continueQuizContent {
+    flex-direction: row;
+    text-align: left;
+  }
+  
+  .buttonTextContainer {
+    align-items: flex-start;
+  }
+}
+
+/* Melhorias para acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+  .backgroundGradient {
+    animation: none;
+  }
+  
+  .header,
+  .buttonSection,
+  .continueQuizWrapper {
+    animation: none;
+  }
+  
+  .stepContainer,
+  .continueQuizButton {
+    transition: none;
+  }
+}
+
+/* Otimização para touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .stepContainer:hover {
+    transform: none;
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  .continueQuizButton:hover {
+    transform: none;
+  }
+}
+
+/* Ajustes para tema escuro do sistema */
+@media (prefers-color-scheme: dark) {
+  .stepContainer {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+  
+  .stepContainer:hover {
+    background: rgba(0, 0, 0, 0.3);
+  }
+}

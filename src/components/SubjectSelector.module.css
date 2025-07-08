@@ -40,7 +40,7 @@
 }
 
 .scrollContainer {
-  max-height: 260px;
+  max-height: 360px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;

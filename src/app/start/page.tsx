@@ -134,7 +134,7 @@ export default function StartPage() {
                 <SubjectSelector
                   selectedSubjects={selectedSubjects}
                   onSubjectsChange={setSelectedSubjects}
-                  subjects={editalSubjects.length > 0 ? editalSubjects : undefined}
+                  subjects={selectedEdital ? editalSubjects : undefined}
                   onConclude={() => setStep(3)}
                 />
               )}
