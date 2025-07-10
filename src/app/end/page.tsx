@@ -49,8 +49,8 @@ export default function EndPage() {
 
   async function handleNewGame() {
     dispatch({ type: 'RESET_QUIZ', payload: { questions: [] } });
-    if (user?.id) {
-      await StorageService.clearCurrentQuiz(user.id);
+    if (user?.id && state.id) {
+      await StorageService.removeCurrentQuiz(user.id, state.id);
     }
     router.push('/start');
   }

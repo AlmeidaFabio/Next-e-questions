@@ -148,6 +148,11 @@ export class StorageService {
     }
   }
 
+  // Limpar todos os simulados em andamento (alias para compatibilidade)
+  static async clearCurrentQuiz(userId: string): Promise<void> {
+    return this.clearAllCurrentQuizzes(userId);
+  }
+
   // Carregar configurações
   static async loadSettings(userId: string): Promise<AppSettings> {
     try {
