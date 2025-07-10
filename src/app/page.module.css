@@ -1,5 +1,5 @@
 .container {
-  min-height: 100vh - 100px;
+  min-height: 100vh - 200px;
   width: 100%;
   position: relative;
   overflow: hidden;
@@ -251,7 +251,7 @@
   
   .buttonSection {
     gap: var(--spacing-md);
-    max-width: 100%;
+    max-width: 60%;
     width: 100%;
   }
   
@@ -313,10 +313,11 @@
   
   .buttonSection {
     gap: var(--spacing-sm);
+    max-width: 100%;
+    width: 100%;
   }
   
   .buttonContent {
-    flex-direction: column;
     text-align: center;
     gap: var(--spacing-xs);
     padding: var(--spacing-sm);
