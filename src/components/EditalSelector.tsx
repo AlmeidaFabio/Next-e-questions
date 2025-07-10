@@ -13,7 +13,7 @@ interface EditalSelectorProps {
 export default function EditalSelector({ editais, selectedEdital, onSelectEdital, onConclude }: EditalSelectorProps) {
   const editalOptions = [
     { id: null, title: 'Todos os Editais', description: 'Questões de todos os editais disponíveis' }, 
-    ...editais
+    ...[...editais].sort((a, b) => a.title.localeCompare(b.title, 'pt-BR'))
   ];
 
   return (

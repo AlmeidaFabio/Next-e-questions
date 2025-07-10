@@ -49,12 +49,10 @@ export default function StartPage() {
 
   useEffect(() => {
     if (user?.id) {
-      StorageService.loadCurrentQuiz(user.id).then((saved: Partial<QuizState> | null) => {
-        if (saved && Array.isArray(saved.questions) && saved.questions.length > 0 && Object.keys(saved.answers || {}).length < saved.questions.length) {
-          setPendingQuiz(saved as QuizState);
-        } else {
-          setPendingQuiz(null);
-        }
+      StorageService.loadCurrentQuizzes(user.id).then((quizzes: Partial<QuizState>[]) => {
+        // Mostra o mais recente em andamento (não finalizado)
+        const pending = quizzes.find(q => q.questions && q.questions.length > 0 && !q.finished && Object.keys(q.answers || {}).length < q.questions.length);
+        setPendingQuiz(pending ? pending as QuizState : null);
       });
     }
   }, [user]);
@@ -157,28 +155,6 @@ export default function StartPage() {
                   onStart={handleStartQuiz}
                   onEdit={() => setStep(1)}
                 />
-              )}
-
-              {/* Botão Continuar Simulado - aparece abaixo dos passos */}
-              {pendingQuiz && (
-                <div className="mt-8">
-                  <button className={styles.startButton} onClick={handleContinueQuiz}>
-                    <div className={styles.buttonGradient}>
-                      <div className={styles.buttonContent}>
-                        <div className={styles.buttonTextContainer}>
-                         
-                          <span className={styles.startButtonSubtext}>Você tem um simulado em andamento</span>
-                          <span className={styles.startButtonText}>Continuar Simulado</span>
-                        </div>
-                        <div className={styles.buttonIconContainer}>
-                          <span className={styles.buttonIconGradient}>
-                            <FaPlay size={18} className={styles.buttonIcon} />
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </button>
-                </div>
               )}
               
               <div className={styles.motivationalSection}>

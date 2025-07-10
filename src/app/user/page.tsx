@@ -41,6 +41,14 @@ export default function UserPage() {
       onPress: () => router.push('/history'),
     },
     {
+      id: 'in-progress',
+      title: 'Simulados em Andamento',
+      subtitle: 'Continue simulados não finalizados',
+      icon: '⏳',
+      color: '#f43f5e',
+      onPress: () => router.push('/in-progress'),
+    },
+    {
       id: 'stats',
       title: 'Estatísticas',
       subtitle: 'Acompanhe seu progresso',

@@ -24,14 +24,23 @@ export function QuizProvider({ children }: ProviderType) {
   const [state, dispatch] = useReducer(quizReducer, initialState);
   const { user } = useAuth();
 
-  // Carregar progresso salvo ao iniciar
+  // Carregar progresso salvo ao iniciar (restaura o último simulado em andamento, se houver)
   useEffect(() => {
     (async () => {
       if (user?.id) {
-        const saved = await StorageService.loadCurrentQuiz(user.id);
-        if (saved && saved.questions && saved.questions.length > 0) {
-          dispatch({ type: "SET_QUESTIONS", payload: { questions: saved.questions } });
-          // Restaurar outros campos se necessário
+        const quizzes = await StorageService.loadCurrentQuizzes(user.id);
+        let quizToRestore = quizzes[0];
+        if (typeof window !== 'undefined') {
+          const selectedId = localStorage.getItem('current_inprogress_quiz_id');
+          if (selectedId) {
+            const found = quizzes.find(q => q.id === selectedId);
+            if (found) quizToRestore = found;
+            // Limpa o id após restaurar
+            localStorage.removeItem('current_inprogress_quiz_id');
+          }
+        }
+        if (quizToRestore && quizToRestore.questions && quizToRestore.questions.length > 0) {
+          dispatch({ type: "RESTORE_PROGRESS", payload: quizToRestore });
         }
       }
     })();
@@ -41,13 +50,13 @@ export function QuizProvider({ children }: ProviderType) {
   useEffect(() => {
     const handlePersistence = async () => {
       if (!user?.id) return;
-      // Salvar progresso se houver questões
-      if (state.questions.length > 0) {
+      // Salvar progresso se houver questões e id
+      if (state.questions.length > 0 && state.id) {
         StorageService.saveCurrentQuiz(user.id, state);
       }
-      // Limpar progresso salvo ao resetar
-      if (state.questions.length === 0) {
-        StorageService.clearCurrentQuiz(user.id);
+      // Remover do array se resetar
+      if (state.questions.length === 0 && state.id) {
+        StorageService.removeCurrentQuiz(user.id, state.id);
       }
     };
     handlePersistence();

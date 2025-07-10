@@ -4,7 +4,7 @@ import { StorageData, UserStats, SavedQuiz, AppSettings, SubjectProgress } from 
 const STORAGE_KEYS = {
   USER_STATS: 'user_stats',
   SAVED_QUIZZES: 'saved_quizzes',
-  CURRENT_QUIZ: 'current_quiz',
+  CURRENT_QUIZZES: 'current_quizzes',
   SETTINGS: 'app_settings',
 } as const;
 
@@ -96,35 +96,55 @@ export class StorageService {
     }
   }
 
-  // Carregar quiz atual
-  static async loadCurrentQuiz(userId: string): Promise<Partial<QuizState> | null> {
+  // Carregar todos os simulados em andamento
+  static async loadCurrentQuizzes(userId: string): Promise<Partial<QuizState>[]> {
     try {
-      const key = getUserKey(STORAGE_KEYS.CURRENT_QUIZ, userId);
+      const key = getUserKey(STORAGE_KEYS.CURRENT_QUIZZES, userId);
       const data = localStorage.getItem(key);
-      return data ? JSON.parse(data) : null;
+      return data ? JSON.parse(data) : [];
     } catch (error) {
-      console.error('Error loading current quiz:', error);
-      return null;
+      console.error('Error loading current quizzes:', error);
+      return [];
     }
   }
 
-  // Salvar quiz atual
+  // Salvar ou atualizar um simulado em andamento
   static async saveCurrentQuiz(userId: string, quizState: Partial<QuizState>): Promise<void> {
     try {
-      const key = getUserKey(STORAGE_KEYS.CURRENT_QUIZ, userId);
-      localStorage.setItem(key, JSON.stringify(quizState));
+      const key = getUserKey(STORAGE_KEYS.CURRENT_QUIZZES, userId);
+      const quizzes: Partial<QuizState>[] = await this.loadCurrentQuizzes(userId);
+      if (!quizState.id) throw new Error('QuizState precisa de id para salvar em andamento');
+      const idx = quizzes.findIndex(q => q.id === quizState.id);
+      if (idx !== -1) {
+        quizzes[idx] = quizState;
+      } else {
+        quizzes.unshift(quizState);
+      }
+      localStorage.setItem(key, JSON.stringify(quizzes));
     } catch (error) {
       console.error('Error saving current quiz:', error);
     }
   }
 
-  // Limpar quiz atual
-  static async clearCurrentQuiz(userId: string): Promise<void> {
+  // Remover um simulado em andamento
+  static async removeCurrentQuiz(userId: string, quizId: string): Promise<void> {
     try {
-      const key = getUserKey(STORAGE_KEYS.CURRENT_QUIZ, userId);
+      const key = getUserKey(STORAGE_KEYS.CURRENT_QUIZZES, userId);
+      const quizzes: Partial<QuizState>[] = await this.loadCurrentQuizzes(userId);
+      const filtered = quizzes.filter(q => q.id !== quizId);
+      localStorage.setItem(key, JSON.stringify(filtered));
+    } catch (error) {
+      console.error('Error removing current quiz:', error);
+    }
+  }
+
+  // Limpar todos os simulados em andamento
+  static async clearAllCurrentQuizzes(userId: string): Promise<void> {
+    try {
+      const key = getUserKey(STORAGE_KEYS.CURRENT_QUIZZES, userId);
       localStorage.removeItem(key);
     } catch (error) {
-      console.error('Error clearing current quiz:', error);
+      console.error('Error clearing all current quizzes:', error);
     }
   }
 

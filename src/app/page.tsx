@@ -16,6 +16,15 @@ export default function HomePage() {
     <div className={styles.container}>
       <div className={styles.backgroundGradient}>
 
+        <h1 className={styles.siteTitle}>Edital em Questão</h1>
+        <div className={styles.heroImageContainer}>
+          <img
+            src="/images/hero.png"
+            alt="Hero - plataforma de estudos"
+            className={styles.heroImage}
+          />
+        </div>
+
         <div className={styles.header}>
           <p className={styles.subtitle}>
             Sua plataforma de estudos para concursos públicos

@@ -5,6 +5,10 @@ const calculateElapsedTime = (startTime: number | null): number => {
   return startTime ? Date.now() - startTime : 0;
 };
 
+const generateQuizId = (): string => {
+  return `quiz_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+};
+
 export const initialState: QuizState = {
   questions: [],
   currentQuestionIndex: 0,
@@ -14,7 +18,8 @@ export const initialState: QuizState = {
   answers: {},
   startTime: null,
   elapsedTime: 0,
-  finished: false
+  finished: false,
+  id: ""
 };
 
 export function quizReducer(state: QuizState, action: QuizActions): QuizState {
@@ -37,7 +42,8 @@ export function quizReducer(state: QuizState, action: QuizActions): QuizState {
         score: 0,
         answers: {},
         startTime: Date.now(),
-        elapsedTime: 0
+        elapsedTime: 0,
+        id: generateQuizId(),
       };
 
     case "ANSWER_QUESTION":
@@ -80,6 +86,12 @@ export function quizReducer(state: QuizState, action: QuizActions): QuizState {
         ...state,
         finished: true,
         elapsedTime: calculateElapsedTime(state.startTime)
+      };
+
+    case "RESTORE_PROGRESS":
+      return {
+        ...state,
+        ...action.payload,
       };
 
     default:

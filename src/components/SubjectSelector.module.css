@@ -201,6 +201,22 @@
   font-size: 1.1rem;
 }
 
+.backButton {
+  margin-top: 16px;
+  padding: 10px 24px;
+  background: var(--color-primary, #0070f3);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.backButton:hover {
+  background: var(--color-secondary, #005bb5);
+}
+
 @media (max-width: 600px) {
   .container {
     max-width: 100%;

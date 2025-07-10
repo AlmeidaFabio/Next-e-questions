@@ -78,10 +78,15 @@ export default function SubjectSelector({
     return (
       <div className={styles.errorContainer}>
         <span className={styles.errorIcon}>❌</span>
-        <span className={styles.errorTitle}>Ops! Algo deu errado</span>
-        <span className={styles.errorText}>
-          Nenhum assunto encontrado. Verifique se as questões possuem o campo subject preenchido.
-        </span>
+        <span className={styles.errorTitle}>Ops! Algo deu errado. </span>
+        <span className={styles.errorText}>Nenhum assunto encontrado.</span>
+        <button
+          className={styles.backButton}
+          onClick={typeof window !== 'undefined' ? () => window.history.back() : undefined}
+          type="button"
+        >
+          Voltar
+        </button>
       </div>
     );
   }

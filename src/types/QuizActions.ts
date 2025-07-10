@@ -10,4 +10,5 @@ export type QuizActions =
   | { type: "CLOSE_EXPLANATION" }
   | { type: "TICK" }
   | { type: "VIEW_QUIZ_DETAILS"; payload: { quiz: unknown } }
-  | { type: "FINISH_QUIZ" }; 
+  | { type: "FINISH_QUIZ" }
+  | { type: "RESTORE_PROGRESS"; payload: Partial<import("./QuizState").QuizState> }; 

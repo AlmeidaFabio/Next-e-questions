@@ -11,4 +11,5 @@ export type QuizState = {
   elapsedTime: number;
   selectedQuizForDetails?: unknown;
   finished?: boolean;
+  id: string;
 };

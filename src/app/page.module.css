@@ -42,11 +42,11 @@
 }
 
 .subtitle {
-  font-size: clamp(1.2rem, 4vw, 1.8rem);
-  color: var(--color-text-primary);
-  font-weight: 300;
-  line-height: 1.4;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  font-size: 1.1rem;
+  color: #e0e6ed;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
 }
 
 .buttonSection {
@@ -483,4 +483,32 @@
   .buttonSection {
     gap: 1rem;
   }
+}
+
+.siteTitle {
+  text-align: center;
+  font-size: 2.6rem;
+  font-weight: 800;
+  margin: 2.5rem 0 1.2rem 0;
+  letter-spacing: -1px;
+  color: #fff;
+  line-height: 1.1;
+}
+
+.heroImageContainer {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 2rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heroImage {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 18px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.08);
+  object-fit: cover;
 }
