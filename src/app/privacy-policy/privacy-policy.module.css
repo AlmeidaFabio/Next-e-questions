@@ -1,7 +1,7 @@
 .container {
   min-height: 100vh;
   width: 100%;
-  background: linear-gradient(135deg, #a5b4fc 0%, #667eea 30%, #764ba2 70%, #330948 100%);
+  background: var(--gradient-primary);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,20 +11,21 @@
 .card {
   width: 100%;
   max-width: 700px;
-  background: rgba(255,255,255,0.97);
+  background: var(--glass-bg);
   border-radius: 20px;
-  box-shadow: 0 2px 16px rgba(76, 34, 112, 0.10);
+  box-shadow: var(--shadow-md);
   padding: 36px 28px 32px 28px;
   margin: 0 auto;
   margin-top: 32px;
   display: flex;
   flex-direction: column;
   gap: 18px;
+  border: 1px solid var(--glass-border);
 }
 .backButton {
   background: none;
   border: none;
-  color: #764ba2;
+  color: var(--color-primary);
   font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
@@ -36,17 +37,17 @@
   transition: color 0.2s;
 }
 .backButton:hover, .backButton:focus {
-  color: #330948;
+  color: var(--color-secondary);
 }
 .title {
   font-size: 2rem;
   font-weight: bold;
-  color: #330948;
+  color: var(--color-primary);
   margin-bottom: 18px;
   text-align: left;
 }
 .content {
-  color: #222;
+  color: var(--color-text-primary);
   font-size: 1.08rem;
   line-height: 1.7;
   word-break: break-word;

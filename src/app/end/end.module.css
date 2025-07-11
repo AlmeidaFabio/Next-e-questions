@@ -1,7 +1,7 @@
 .container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: var(--gradient-primary);
+  color: var(--color-text-primary);
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -23,12 +23,12 @@
   font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 16px;
-  color: white;
+  color: var(--color-text-primary);
 }
 
 .subtitle {
   font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--color-text-secondary);
   margin-bottom: 32px;
 }
 
@@ -48,12 +48,12 @@
 .performanceText {
   font-size: 1rem;
   font-weight: bold;
-  color: white;
+  color: var(--color-text-primary);
 }
 
 .performanceMessage {
   font-size: 1.1rem;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--color-text-secondary);
   margin-bottom: 32px;
 }
 
@@ -66,7 +66,7 @@
   align-items: center;
   justify-content: center;
   margin: 0 auto 32px;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--glass-bg);
   backdrop-filter: blur(10px);
 }
 
@@ -77,14 +77,14 @@
 .scorePercentage {
   font-size: 3rem;
   font-weight: bold;
-  color: white;
+  color: var(--color-text-primary);
   display: block;
   margin-bottom: 4px;
 }
 
 .scoreText {
   font-size: 1rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--color-text-secondary);
 }
 
 .statsGrid {
@@ -95,12 +95,12 @@
 }
 
 .statCard {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--glass-bg);
   backdrop-filter: blur(10px);
   border-radius: 12px;
   padding: 16px;
   text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--glass-border);
 }
 
 .statIcon {
@@ -112,14 +112,14 @@
 .statValue {
   font-size: 1.5rem;
   font-weight: bold;
-  color: white;
+  color: var(--color-text-primary);
   display: block;
   margin-bottom: 4px;
 }
 
 .statLabel {
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--color-text-secondary);
 }
 
 /* Botões base */
@@ -128,18 +128,18 @@
   border-radius: 12px;
   font-size: 1rem;
   font-weight: 600;
-  color: white;
+  color: var(--color-text-primary);
   cursor: pointer;
   transition: all 0.3s ease;
   border: none;
   text-align: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
 }
 
 /* Botão primário */
 .primaryButton {
   composes: buttonBase;
-  background: linear-gradient(135deg, #22c55e, #16a34a);
+  background: linear-gradient(135deg, var(--color-success), #16a34a);
 }
 
 .primaryButton:hover {
@@ -149,29 +149,12 @@
 /* Botão secundário */
 .secondaryButton {
   composes: buttonBase;
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: var(--glass-bg);
+  border: 2px solid var(--glass-border);
 }
 
 .secondaryButton:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-/* Botão offline */
-.offlineButton {
-  composes: buttonBase;
-  background: rgba(255, 255, 255, 0.08);
-  border: 2px dashed rgba(255, 255, 255, 0.4);
-}
-
-.offlineButton:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.15);
-  transform: translateY(-1px);
-}
-
-.offlineButton:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+  background: var(--glass-border);
 }
 
 /* Agrupamento dos botões principais */
@@ -183,35 +166,26 @@
   margin-bottom: 24px;
 }
 
-.offlineSection {
-  margin-top: 24px;
-}
-
 /* Responsividade */
 @media (max-width: 768px) {
   .container {
     padding: 16px;
   }
-
   .title {
     font-size: 2rem;
   }
-
   .scoreCircle {
     width: 160px;
     height: 160px;
     border-width: 6px;
   }
-
   .scorePercentage {
     font-size: 2.5rem;
   }
-
   .actionButtons {
     flex-direction: column;
     align-items: center;
   }
-
   .buttonBase {
     width: 100%;
     max-width: 300px;

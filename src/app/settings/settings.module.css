@@ -1,13 +1,13 @@
 .container {
   min-height: 100vh;
   width: 100%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #330948 100%);
+  background: var(--gradient-primary);
   background-size: 200% 200%;
   animation: gradientShift 8s ease infinite;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 32px 0 64px 0;
+  padding: 12px;
 }
 
 @keyframes gradientShift {
@@ -17,12 +17,12 @@
 }
 
 .backButton {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--glass-bg);
   border: none;
   border-radius: 8px;
   padding: 8px 16px;
   margin-right: 16px;
-  color: white;
+  color: var(--color-text-primary);
   cursor: pointer;
   font-size: 16px;
   transition: all 0.3s ease;
@@ -35,14 +35,14 @@
 }
 
 .backButton:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: var(--glass-border);
   transform: translateY(-2px);
 }
 
 .title {
   font-size: 2rem;
   font-weight: bold;
-  color: #fff;
+  color: var(--color-text-primary);
   margin: 48px 0 32px 0;
   text-align: center;
 }
@@ -51,11 +51,11 @@
   width: 100%;
   max-width: 600px;
   margin: 0 auto 36px auto;
-  background: rgba(255,255,255,0.10);
+  background: var(--glass-bg);
   backdrop-filter: blur(10px);
   border-radius: 20px;
-  border: 1px solid rgba(255,255,255,0.13);
-  box-shadow: 0 2px 12px rgba(76, 34, 112, 0.08);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-md);
   padding: 32px 24px 24px 24px;
   display: flex;
   flex-direction: column;
@@ -70,7 +70,7 @@
 .sectionTitle {
   font-size: 1.2rem;
   font-weight: 600;
-  color: #fff;
+  color: var(--color-text-primary);
   margin-bottom: 18px;
 }
 
@@ -78,10 +78,10 @@
   margin-bottom: 18px;
 }
 .settingItemGradient {
-  background: linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.05));
+  background: linear-gradient(135deg, var(--glass-bg), rgba(255,255,255,0.05));
   border-radius: 16px;
   padding: 18px 16px;
-  border: 1px solid rgba(255,255,255,0.13);
+  border: 1px solid var(--glass-border);
   display: flex;
   align-items: center;
   transition: box-shadow 0.2s;
@@ -108,23 +108,23 @@
 .settingTitle {
   font-size: 1.05rem;
   font-weight: 600;
-  color: #fff;
+  color: var(--color-text-primary);
   margin-bottom: 2px;
 }
 .settingSubtitle {
   font-size: 0.98rem;
-  color: #e0e0e0;
+  color: var(--color-text-secondary);
 }
 .toggleSwitch {
   width: 40px;
   height: 22px;
-  accent-color: #764ba2;
+  accent-color: var(--color-primary);
   cursor: pointer;
 }
 .chevronButton {
   background: none;
   border: none;
-  color: #fff;
+  color: var(--color-text-primary);
   font-size: 1.5rem;
   cursor: pointer;
   padding: 4px 8px;
@@ -132,19 +132,20 @@
   transition: background 0.2s;
 }
 .chevronButton:hover, .chevronButton:focus {
-  background: rgba(255,255,255,0.13);
-  color: #764ba2;
+  background: var(--glass-border);
+  color: var(--color-primary);
 }
 .chevron {
   font-size: 1.5rem;
   font-weight: bold;
   opacity: 0.7;
+  color: var(--color-text-secondary);
 }
 
 @media (max-width: 700px) {
   .section {
     max-width: 98vw;
-    padding: 18px 6vw 18px 6vw;
+    padding: 12px 12px;
   }
   .title {
     font-size: 1.3rem;

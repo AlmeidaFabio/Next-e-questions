@@ -30,8 +30,11 @@ export default function InProgressPage() {
   }, [user]);
 
   const handleQuizClick = (quizId: string) => {
-    // Salvar o id do simulado selecionado em andamento (pode ser via contexto, rota, etc.)
-    // Aqui, para simplificar, vamos usar localStorage (pode ser melhorado com contexto global)
+    const quizExists = quizzes.some(q => q.id === quizId);
+    if (!quizExists) {
+      alert("Simulado não encontrado ou foi removido.");
+      return;
+    }
     localStorage.setItem('current_inprogress_quiz_id', quizId);
     router.push(`/question`);
   };

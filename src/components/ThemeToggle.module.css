@@ -1,0 +1,70 @@
+.themeToggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    backdrop-filter: var(--backdrop-blur);
+    color: var(--color-text-primary);
+  }
+  
+  .themeToggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .themeToggle:active {
+    transform: scale(0.95);
+  }
+  
+  .icon {
+    transition: all var(--transition-normal);
+  }
+  
+  .themeToggle:hover .icon {
+    transform: rotate(15deg);
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .themeToggle {
+      top: 16px;
+      right: 16px;
+      width: 44px;
+      height: 44px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .themeToggle {
+      top: 12px;
+      right: 12px;
+      width: 40px;
+      height: 40px;
+    }
+  }
+  
+  /* Redução de movimento para acessibilidade */
+  @media (prefers-reduced-motion: reduce) {
+    .themeToggle {
+      transition: none;
+    }
+    
+    .themeToggle:hover {
+      transform: none;
+    }
+    
+    .themeToggle:hover .icon {
+      transform: none;
+    }
+  }

@@ -1,15 +1,18 @@
+/* page.module.css - Atualizado com suporte a temas */
+
 .container {
-  min-height: 100vh - 200px;
+  min-height: 100vh;
   width: 100%;
   position: relative;
   overflow: hidden;
+  transition: all var(--transition-normal);
 }
 
 .backgroundGradient {
   position: relative;
   min-height: 100vh;
   width: 100%;
-  background: linear-gradient(135deg, #a5b4fc 0%, #667eea 30%, #764ba2 70%, #330948 100%);
+  background: var(--gradient-primary);
   background-size: 200% 200%;
   animation: gradientShift 8s ease infinite;
   display: flex;
@@ -18,6 +21,7 @@
   align-items: center;
   padding: var(--spacing-lg);
   text-align: center;
+  transition: background var(--transition-slow);
 }
 
 @keyframes gradientShift {
@@ -43,10 +47,12 @@
 
 .subtitle {
   font-size: 1.1rem;
-  color: #e0e6ed;
+  color: var(--subtitle-color);
   text-align: center;
   margin-bottom: 1.5rem;
   font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  transition: color var(--transition-normal);
 }
 
 .buttonSection {
@@ -69,26 +75,32 @@
   padding: 0;
   width: 100%;
   max-width: 320px;
-  transition: all 0.3s ease;
+  transition: all var(--transition-normal);
   border-radius: var(--radius-full);
   overflow: hidden;
 }
 
 .startButton:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 24px rgba(119, 42, 220, 0.3);
+  box-shadow: var(--shadow-primary);
 }
 
 .startButton:active {
   transform: translateY(0);
 }
 
+.startButton:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+}
+
 .buttonGradient {
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  background: var(--gradient-button);
   border-radius: var(--radius-full);
   padding: 3px;
   position: relative;
   overflow: hidden;
+  transition: background var(--transition-normal);
 }
 
 .buttonGradient::before {
@@ -99,7 +111,7 @@
   width: 100%;
   height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.5s ease;
+  transition: left var(--transition-slow);
 }
 
 .startButton:hover .buttonGradient::before {
@@ -107,7 +119,7 @@
 }
 
 .buttonContent {
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  background: var(--gradient-button);
   border-radius: var(--radius-full);
   padding: var(--spacing-md) var(--spacing-lg);
   display: flex;
@@ -116,6 +128,7 @@
   gap: var(--spacing-sm);
   position: relative;
   overflow: hidden;
+  transition: background var(--transition-normal);
 }
 
 .buttonTextContainer {
@@ -131,13 +144,15 @@
   color: var(--color-text-primary);
   margin-bottom: 2px;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  transition: color var(--transition-normal);
 }
 
 .startButtonSubtext {
   font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--color-text-muted);
   font-weight: 400;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  transition: color var(--transition-normal);
 }
 
 .buttonIconContainer {
@@ -155,9 +170,10 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: var(--backdrop-blur);
+  transition: all var(--transition-normal);
 }
 
 .startButton:hover .buttonIconGradient {
@@ -167,7 +183,7 @@
 
 .buttonIcon {
   color: var(--color-text-primary);
-  transition: transform 0.3s ease;
+  transition: transform var(--transition-normal), color var(--transition-normal);
 }
 
 .startButton:hover .buttonIcon {
@@ -179,13 +195,13 @@
   z-index: 2;
   max-width: 500px;
   padding: var(--spacing-md);
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+  background: var(--glass-bg);
+  backdrop-filter: var(--backdrop-blur);
   border-radius: var(--radius-lg);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-md);
   animation: fadeInUp 0.8s ease-out 0.4s both;
-  transition: all 0.3s ease;
+  transition: all var(--transition-normal);
 }
 
 .motivationalSection::before {
@@ -195,14 +211,15 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  background: linear-gradient(135deg, var(--glass-bg), rgba(255, 255, 255, 0.02));
   border-radius: var(--radius-lg);
   pointer-events: none;
+  transition: background var(--transition-normal);
 }
 
 .motivationalSection:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-lg);
   background: rgba(255, 255, 255, 0.15);
 }
 
@@ -213,9 +230,43 @@
   font-weight: 300;
   line-height: 1.5;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  transition: color var(--transition-normal);
 }
 
-/* Animation for initial load */
+.siteTitle {
+  text-align: center;
+  font-size: 2.6rem;
+  font-weight: 800;
+  margin: 2.5rem 0 1.2rem 0;
+  letter-spacing: -1px;
+  color: var(--title-color);
+  line-height: 1.1;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  animation: fadeInUp 0.8s ease-out;
+  transition: color var(--transition-normal);
+}
+
+.heroImageContainer {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 2rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.heroImage {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 18px;
+  box-shadow: var(--shadow-lg);
+  object-fit: cover;
+  transition: box-shadow var(--transition-normal);
+}
+
+/* Animação para carregamento inicial */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -227,13 +278,13 @@
   }
 }
 
-/* Responsive Design - Mobile First Approach */
+/* Responsividade - Mobile First */
 
 /* Tablets e telas médias */
 @media (max-width: 768px) {
   .backgroundGradient {
     padding: var(--spacing-md);
-    padding-top: 5rem; /* Espaço para header fixo */
+    padding-top: 5rem;
     min-height: 100vh;
     justify-content: flex-start;
   }
@@ -251,7 +302,7 @@
   
   .buttonSection {
     gap: var(--spacing-md);
-    max-width: 60%;
+    max-width: 80%;
     width: 100%;
   }
   
@@ -291,13 +342,17 @@
     font-size: 0.9rem;
     line-height: 1.4;
   }
+  
+  .siteTitle {
+    font-size: 2.2rem;
+  }
 }
 
 /* Smartphones */
 @media (max-width: 480px) {
   .backgroundGradient {
     padding: var(--spacing-sm);
-    padding-top: 4.5rem; /* Espaço reduzido para header mobile */
+    padding-top: 4rem;
   }
   
   .header {
@@ -354,13 +409,21 @@
     font-size: 0.85rem;
     line-height: 1.4;
   }
+  
+  .siteTitle {
+    font-size: 1.8rem;
+  }
+  
+  .heroImage {
+    border-radius: 12px;
+  }
 }
 
 /* Telas muito pequenas */
 @media (max-width: 360px) {
   .backgroundGradient {
     padding: 0.75rem;
-    padding-top: 4rem;
+    padding-top: 3.5rem;
   }
   
   .header {
@@ -406,13 +469,17 @@
   .motivationalText {
     font-size: 0.8rem;
   }
+  
+  .siteTitle {
+    font-size: 1.6rem;
+  }
 }
 
 /* Orientação landscape em smartphones */
 @media (max-height: 500px) and (orientation: landscape) {
   .backgroundGradient {
     padding: 0.5rem;
-    padding-top: 3.5rem;
+    padding-top: 3rem;
     justify-content: center;
   }
   
@@ -441,9 +508,13 @@
   .motivationalText {
     font-size: 0.8rem;
   }
+  
+  .siteTitle {
+    font-size: 1.5rem;
+  }
 }
 
-/* Melhorias para acessibilidade */
+/* Redução de movimento para acessibilidade */
 @media (prefers-reduced-motion: reduce) {
   .backgroundGradient {
     animation: none;
@@ -451,12 +522,21 @@
   
   .header,
   .buttonSection,
-  .motivationalSection {
+  .motivationalSection,
+  .siteTitle,
+  .heroImageContainer {
     animation: none;
   }
   
-  .startButton {
+  .startButton,
+  .buttonGradient,
+  .buttonIconGradient,
+  .motivationalSection {
     transition: none;
+  }
+  
+  .buttonGradient::before {
+    display: none;
   }
 }
 
@@ -465,7 +545,8 @@
   .subtitle,
   .startButtonText,
   .startButtonSubtext,
-  .motivationalText {
+  .motivationalText,
+  .siteTitle {
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
   }
 }
@@ -473,7 +554,7 @@
 /* Otimização para devices com pouca altura */
 @media (max-height: 600px) {
   .backgroundGradient {
-    padding-top: 4rem;
+    padding-top: 3rem;
   }
   
   .header {
@@ -484,32 +565,8 @@
   .buttonSection {
     gap: 1rem;
   }
-}
-
-.siteTitle {
-  text-align: center;
-  font-size: 2.6rem;
-  font-weight: 800;
-  margin: 2.5rem 0 1.2rem 0;
-  letter-spacing: -1px;
-  color: #fff;
-  line-height: 1.1;
-}
-
-.heroImageContainer {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto 2rem auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.heroImage {
-  width: 100%;
-  max-width: 600px;
-  height: auto;
-  border-radius: 18px;
-  box-shadow: 0 4px 32px rgba(0,0,0,0.08);
-  object-fit: cover;
+  
+  .siteTitle {
+    margin: 1rem 0 0.5rem 0;
+  }
 }
