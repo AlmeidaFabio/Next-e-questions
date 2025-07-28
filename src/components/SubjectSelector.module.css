@@ -40,7 +40,7 @@
 }
 
 .scrollContainer {
-  max-height: 360px;
+  max-height: 460px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -224,7 +224,7 @@
     gap: 16px;
   }
   .scrollContainer {
-    max-height: 280px;
+    max-height: 480px;
   }
   .actionButton {
     font-size: 1rem;

@@ -101,10 +101,11 @@
   font-weight: 700;
   color: var(--color-text-primary);
   font-family: 'Courier New', monospace;
-  background: var(--gradient-primary);
+  background: var(--gradient-secondary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.25), 0 0 1px #fff;
 }
 
 /* Container de scroll */
