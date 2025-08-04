@@ -46,7 +46,7 @@ export default function LoginPage() {
                 <IoLockClosed size={32} className={styles.logoIcon} />
               </div>
             </div>
-            <h1 className={styles.title}>Bem-vindo de volta</h1>
+            <h1 className={styles.title}>Bem-vindo(a)</h1>
             <p className={styles.subtitle}>Entre na sua conta para continuar</p>
           </div>
           <div className={styles.inputContainer}>
